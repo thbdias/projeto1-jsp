@@ -5,14 +5,11 @@
 	<meta charset="ISO-8859-1">
 	<title>Insert title here</title>
 </head>
-<body>
-	<h1>Bem vindo ao curso de JSP</h1>
+<body>	
+	<h1>Página index.jsp</h1>
 	
-	<!-- indica qual pagina irá tratar os erros -->
-	<%@ page errorPage="receber-nome.jsp" %>
+	<%@ include file="pagina_include.jsp" %>
 	
-	<!-- provocando erro -->
-	<%= 100/0 %>
-	
+	<h3>Página index.jsp continuação</h3>
 </body>
 </html>
