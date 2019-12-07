@@ -28,6 +28,11 @@
 	<%= application.getInitParameter("estado") %>
 	<br><br>
 	<% session.setAttribute("curso", "curso de jsp"); %>
+	<br><br>
+	<%@ page import = "java.util.Date" %>
+	<%= "data de hoje --> " + new Date() %>
+	<br><br>
+	
 	
 </body>
 </html>
