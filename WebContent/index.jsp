@@ -10,10 +10,19 @@
 	<meta charset="ISO-8859-1">
 	<title>Insert title here</title>
 </head>
-<body>	
+<body>		
 	<h1>Página index.jsp</h1>
-	<br><br>
+	<br><br>	
 	
-	<%= calcula.calcula(50) %>
+	<form action="cabecalho.jsp" method="post">
+		nome: <input type="text" id="nome" name="nome" >
+		<br>
+		ano: <input type="text" id="ano" name="ano" >
+		<br>
+		sexo: <input type="text" id="sexo" name="sexo" >
+		<br>
+		<input type="submit" value="testar">
+	</form>
+	
 </body>
 </html>
