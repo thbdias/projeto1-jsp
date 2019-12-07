@@ -7,32 +7,12 @@
 </head>
 <body>
 	<h1>Bem vindo ao curso de JSP</h1>
-	<%= "seu sucesso garantido!!" %>
 	
-	<form action="receber-nome.jsp">
-		<input type="text" id="nome" name ="nome">
-		<input type="submit" value="Enviar">
-	</form>
+	<!-- indica qual pagina irá tratar os erros -->
+	<%@ page errorPage="receber-nome.jsp" %>
 	
-	<%! 
-		int cont = 2;
-		
-		public int retorna(int n){
-			return n*3;
-		}
-	%>
-	<%= cont %>
-	<br /><br />
-	<%= retorna(8) %>
-	<br /><br />
-	<%= application.getInitParameter("estado") %>
-	<br><br>
-	<% session.setAttribute("curso", "curso de jsp"); %>
-	<br><br>
-	<%@ page import = "java.util.Date" %>
-	<%= "data de hoje --> " + new Date() %>
-	<br><br>
-	
+	<!-- provocando erro -->
+	<%= 100/0 %>
 	
 </body>
 </html>
