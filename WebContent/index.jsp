@@ -26,5 +26,8 @@
 	<%= retorna(8) %>
 	<br /><br />
 	<%= application.getInitParameter("estado") %>
+	<br><br>
+	<% session.setAttribute("curso", "curso de jsp"); %>
+	
 </body>
 </html>
