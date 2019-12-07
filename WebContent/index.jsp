@@ -1,3 +1,5 @@
+<jsp:useBean id="calcula" class="beans.BeanCursoJsp" type="beans.BeanCursoJsp" scope="page"/>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <%@ taglib prefix="myprefix" uri="WEB-INF/testetag.tld"%>
@@ -12,10 +14,6 @@
 	<h1>Página index.jsp</h1>
 	<br><br>
 	
-	<jsp:include page="cabecalho.jsp"/>
-	<br>
-	<h3>corpo da página</h3>
-	<br>
-	<jsp:include page="rodape.jsp"/>
+	<%= calcula.calcula(50) %>
 </body>
 </html>
