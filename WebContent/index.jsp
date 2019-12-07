@@ -14,14 +14,12 @@
 	<h1>Página index.jsp</h1>
 	<br><br>	
 	
-	<form action="cabecalho.jsp" method="post">
-		nome: <input type="text" id="nome" name="nome" >
+	<form action="LoginServlet" method="post">
+		Login: <input type="text" id="login" name="login">
 		<br>
-		ano: <input type="text" id="ano" name="ano" >
+		Senha: <input type="text" id="senha" name="senha">
 		<br>
-		sexo: <input type="text" id="sexo" name="sexo" >
-		<br>
-		<input type="submit" value="testar">
+		<input type="submit" value="Logar">
 	</form>
 	
 </body>
