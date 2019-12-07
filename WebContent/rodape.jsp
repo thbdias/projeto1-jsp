@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1> Receber nome </h1>
+	<h1>Rodapé</h1>
 	
-	<%= request.getParameter("paramforward") %>
+	
 </body>
 </html>

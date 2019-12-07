@@ -10,9 +10,15 @@
 </head>
 <body>	
 	<h1>Página index.jsp</h1>
+	<br><br>
 	
-	<jsp:forward page="receber-nome.jsp">
-		<jsp:param value="este é um parâmetro do index!" name="paramforward"/>
-	</jsp:forward>
+	<form action="cabecalho.jsp" method="post">
+		<% session.setAttribute("user", "javaavancado"); %>
+		<input type="text" id="nome" name="nome">
+		<br>
+		<input type="text" id="ano" name="ano">
+		<br>
+		<input type="submit" value="testar">
+	</form>
 </body>
 </html>
