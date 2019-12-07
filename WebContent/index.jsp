@@ -22,8 +22,9 @@
 		}
 	%>
 	<%= cont %>
-	<br />
+	<br /><br />
 	<%= retorna(8) %>
-	
+	<br /><br />
+	<%= application.getInitParameter("estado") %>
 </body>
 </html>

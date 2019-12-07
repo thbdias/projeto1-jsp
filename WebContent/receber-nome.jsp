@@ -28,6 +28,6 @@
 	<%= "RESPONSE -> Envia uma resposta a uma requisição solicitada (pra quem o chamou)" %>
 	<br>
 	<% //response.sendRedirect("/cadastro-pessoa.jsp") %>
-	<% response.sendRedirect("http://www.oantagonista.com"); %>
+	<% //response.sendRedirect("http://www.oantagonista.com"); %>
 </body>
 </html>
