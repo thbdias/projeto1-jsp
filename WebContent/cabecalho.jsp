@@ -9,11 +9,6 @@
 	
 	
 	<h1>Cabeçalho</h1>
-	<br>
-	Nome: ${param.nome}
-	<br>
-	Ano: ${param.ano}
-	<br>
-	usuario: ${sessionScope.user}
+	
 </body>
 </html>

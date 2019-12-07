@@ -12,13 +12,10 @@
 	<h1>Página index.jsp</h1>
 	<br><br>
 	
-	<form action="cabecalho.jsp" method="post">
-		<% session.setAttribute("user", "javaavancado"); %>
-		<input type="text" id="nome" name="nome">
-		<br>
-		<input type="text" id="ano" name="ano">
-		<br>
-		<input type="submit" value="testar">
-	</form>
+	<jsp:include page="cabecalho.jsp"/>
+	<br>
+	<h3>corpo da página</h3>
+	<br>
+	<jsp:include page="rodape.jsp"/>
 </body>
 </html>
