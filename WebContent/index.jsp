@@ -11,10 +11,8 @@
 <body>	
 	<h1>Página index.jsp</h1>
 	
-	<%@ include file="pagina_include.jsp" %>
-	
-	<h3>Página index.jsp continuação</h3>
-	<br><br>
-	<myprefix:minhatag/>
+	<jsp:forward page="receber-nome.jsp">
+		<jsp:param value="este é um parâmetro do index!" name="paramforward"/>
+	</jsp:forward>
 </body>
 </html>
