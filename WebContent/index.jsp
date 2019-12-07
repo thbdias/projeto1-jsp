@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="myprefix" uri="WEB-INF/testetag.tld"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,5 +14,7 @@
 	<%@ include file="pagina_include.jsp" %>
 	
 	<h3>Página index.jsp continuação</h3>
+	<br><br>
+	<myprefix:minhatag/>
 </body>
 </html>
