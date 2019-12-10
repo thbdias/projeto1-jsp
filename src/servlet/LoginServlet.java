@@ -37,10 +37,10 @@ public class LoginServlet extends HttpServlet {
 			
 			if (daoLogin.validarLogin(login, senha)) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("acessoliberado.jsp");
-				dispatcher.forward(request, response);
+				dispatcher.forward(request, response); //faz o redirecionamento
 			}else {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("acessonegado.jsp");
-				dispatcher.forward(request, response);
+				dispatcher.forward(request, response); //faz o redirecionamento
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

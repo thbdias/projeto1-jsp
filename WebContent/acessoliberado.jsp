@@ -8,7 +8,10 @@
 </head>
 <body>	
 	
-	<h1>Seja bem vido ao sistema em jsp</h1>	
+	<h1>Seja bem vido ao sistema em jsp</h1>
+	<br>
+	
+	<a href="cadastroUsuario.jsp">Cadastro de usuários</a>	
 	
 </body>
 </html>
