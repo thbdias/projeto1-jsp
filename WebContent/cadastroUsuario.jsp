@@ -25,6 +25,11 @@
 							value="${user.id}" class="field-long"></td>
 					</tr>
 					<tr>
+						<td>Nome:</td>
+						<td><input type="text" id="nome" name="nome"
+							value="${user.nome}"></td>
+					</tr>
+					<tr>
 						<td>Login:</td>
 						<td><input type="text" id="login" name="login"
 							value="${user.login}"></td>
@@ -33,7 +38,7 @@
 						<td>Senha:</td>
 						<td><input type="password" id="senha" name="senha"
 							value="${user.senha}"></td>
-					</tr>
+					</tr>					
 					<tr>
 						<td></td>
 						<td><input type="submit" value="Salvar"></td>
@@ -51,7 +56,7 @@
 				<tr>
 					<th>Id</th>
 					<th>Login</th>
-					<th>Senha</th>
+					<th>Nome</th>
 					<th>Delete</th>
 					<th>Editar</th>
 				</tr>
@@ -59,7 +64,7 @@
 					<tr>
 						<td style="width: 150px"><c:out value="${user.id}"></c:out></td>
 						<td style="width: 150px"><c:out value="${user.login}"></c:out></td>
-						<td><c:out value="${user.senha}"></c:out></td>
+						<td><c:out value="${user.nome}"></c:out></td>
 						<td>
 							<a href="salvarUsuario?acao=delete&user=${user.login}">
 								<img alt="Excluir" title="Excluir" src="resources/img/delete.png" width="20px" height="20px">
