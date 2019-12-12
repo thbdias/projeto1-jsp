@@ -32,13 +32,11 @@
 					</tr>
 					<tr>
 						<td>Login:</td>
-						<td><input type="text" id="login" name="login"
-							value="${user.login}"></td>
+						<td><input type="text" id="login" name="login" value="${user.login}"></td>
 					</tr>
 					<tr>
 						<td>Senha:</td>
-						<td><input type="password" id="senha" name="senha"
-							value="${user.senha}"></td>
+						<td><input type="password" id="senha" name="senha" value="${user.senha}"></td>
 					</tr>					
 					<tr>
 						<td></td>

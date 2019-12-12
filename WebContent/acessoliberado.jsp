@@ -8,10 +8,14 @@
 </head>
 <body>	
 	
-	<h1>Seja bem vido ao sistema em jsp</h1>
-	<br>
-	
-	<a href="salvarUsuario?acao=listarTodos">Cadastro de usuários</a>	
+	<center>
+		<h1>Seja bem vido ao sistema em jsp</h1>
+		<br>
+		
+		<a href="salvarUsuario?acao=listarTodos">	
+			<img alt="Cadastro de Usuários" title="Cadastro de Usuários" src="resources/img/user.png" width="150px" height="150px">		
+		</a>	
+	</center>
 	
 </body>
 </html>
