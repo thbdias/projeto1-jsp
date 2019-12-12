@@ -23,7 +23,7 @@ public class ProdutoServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("cadastroProduto.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");
 		view.forward(request, response);
 	}
 
@@ -37,9 +37,14 @@ public class ProdutoServlet extends HttpServlet {
 		produto.setQuantidade(Double.parseDouble(request.getParameter("quant")));
 		produto.setValor(Double.parseDouble(request.getParameter("valor")));
 		
-		daoProduto.salvar(produto);
+		daoProduto.salvar(produto);		
 		
-		RequestDispatcher view = request.getRequestDispatcher("cadastroProduto.jsp");
-		view.forward(request, response);
+		try {
+			RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");
+			request.setAttribute("produtos", daoProduto.listarProdutos());
+			view.forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 	}
 }

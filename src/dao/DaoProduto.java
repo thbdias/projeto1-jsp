@@ -2,7 +2,10 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import beans.BeanProduto;
 import connection.SingleConnection;
@@ -31,7 +34,26 @@ public class DaoProduto {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-		}
+		}		
+	}
+	
+	public List<BeanProduto> listarProdutos() throws Exception{
+		List<BeanProduto> produtos = new ArrayList<BeanProduto>();
+		BeanProduto produto = null;		
 		
+		String sql = "select * from produto";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		ResultSet resultSet = statement.executeQuery();
+	
+		while(resultSet.next()) {
+			produto = new BeanProduto();
+			produto.setId(resultSet.getLong("id"));
+			produto.setNome(resultSet.getString("nome"));
+			produto.setQuantidade(resultSet.getDouble("quantidade"));
+			produto.setValor(resultSet.getDouble("valor"));
+			produtos.add(produto);
+		}		
+		
+		return produtos;
 	}
 }
