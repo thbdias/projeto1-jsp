@@ -83,7 +83,12 @@ public class Usuario extends HttpServlet {
 					daoUsuario.salvar(usuario);			
 				}
 				else if (id != null && !id.isEmpty()) {
-					daoUsuario.atualizar(usuario);	
+					if (!daoUsuario.validarLoginUpdate(login, id)) {
+						request.setAttribute("msg", "Usuário já existe com o mesmo login!");
+					}
+					else {
+						daoUsuario.atualizar(usuario);
+					}
 				}
 			
 			
