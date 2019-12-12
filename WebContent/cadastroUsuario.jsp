@@ -15,6 +15,8 @@
 		<h1>Cadastro de Usuário</h1>
 	</center>
 
+	<h3>${msg}</h3>
+	
 	<form action="salvarUsuario" method="post" id="formUser">
 		<ul class="form-style-1">
 			<li>
