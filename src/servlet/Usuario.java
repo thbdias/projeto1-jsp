@@ -69,7 +69,7 @@ public class Usuario extends HttpServlet {
 			String fone = request.getParameter("fone");
 			
 			BeanCursoJsp usuario = new BeanCursoJsp();
-			usuario.setId(!id.isEmpty()? Long.parseLong(id) : 0);
+			usuario.setId(!id.isEmpty()? Long.parseLong(id) : null);
 			usuario.setLogin(login);
 			usuario.setSenha(senha);
 			usuario.setNome(nome);
@@ -78,9 +78,11 @@ public class Usuario extends HttpServlet {
 			try {
 				if (id == null || id.isEmpty() && !daoUsuario.validarLogin(login)) { //nao deixa cadastrar mais de um login iguais
 					request.setAttribute("msg", "Usuário já existe com o mesmo login!");
+					request.setAttribute("user", usuario);
 				}
 				if (id == null || id.isEmpty() && !daoUsuario.validarSenha(senha)) { //não deixa cadastrar mais de uma senha iguais
 					request.setAttribute("msg", "Senha já existe para outro usuário!");
+					request.setAttribute("user", usuario);
 				}
 				else if (id == null || id.isEmpty() && daoUsuario.validarLogin(login)) { 
 					daoUsuario.salvar(usuario);			
@@ -88,9 +90,11 @@ public class Usuario extends HttpServlet {
 				else if (id != null && !id.isEmpty()) { //atualizar
 					if (!daoUsuario.validarLoginUpdate(login, id)) {
 						request.setAttribute("msg", "Usuário já existe com o mesmo login!");
+						request.setAttribute("user", usuario);
 					}
 					else if (!daoUsuario.validarSenhaUpdate(senha, id)) {
 						request.setAttribute("msg", "Senha já existe para outro usuário!");
+						request.setAttribute("user", usuario);
 					}
 					else {
 						daoUsuario.atualizar(usuario);
