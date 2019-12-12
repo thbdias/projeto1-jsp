@@ -12,10 +12,9 @@
 <body>
 
 	<center>
-		<h1>Cadastro de Usuário</h1>
+		<h1>Cadastro de Usuário</h1>	
+		<h3 style="color: red">${msg}</h3>
 	</center>
-
-	<h3>${msg}</h3>
 	
 	<form action="salvarUsuario" method="post" id="formUser">
 		<ul class="form-style-1">
