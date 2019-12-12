@@ -76,15 +76,21 @@ public class Usuario extends HttpServlet {
 			usuario.setFone(fone);
 			
 			try {
-				if (id == null || id.isEmpty() && !daoUsuario.validarLogin(login)) { //nao deixa cadastrar mais de um login
+				if (id == null || id.isEmpty() && !daoUsuario.validarLogin(login)) { //nao deixa cadastrar mais de um login iguais
 					request.setAttribute("msg", "Usuário já existe com o mesmo login!");
-				}				
+				}
+				if (id == null || id.isEmpty() && !daoUsuario.validarSenha(senha)) { //não deixa cadastrar mais de uma senha iguais
+					request.setAttribute("msg", "Senha já existe para outro usuário!");
+				}
 				else if (id == null || id.isEmpty() && daoUsuario.validarLogin(login)) { 
 					daoUsuario.salvar(usuario);			
 				}
-				else if (id != null && !id.isEmpty()) {
+				else if (id != null && !id.isEmpty()) { //atualizar
 					if (!daoUsuario.validarLoginUpdate(login, id)) {
 						request.setAttribute("msg", "Usuário já existe com o mesmo login!");
+					}
+					else if (!daoUsuario.validarSenhaUpdate(senha, id)) {
+						request.setAttribute("msg", "Senha já existe para outro usuário!");
 					}
 					else {
 						daoUsuario.atualizar(usuario);

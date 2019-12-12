@@ -117,6 +117,30 @@ public class DaoUsuario {
 		
 		return false;
 	}
+	
+	public boolean validarSenha(String senha) throws Exception {
+		String sql = "select count(1) as qtd from usuario where senha = '" + senha + "'";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		ResultSet resultSet = statement.executeQuery();
+		
+		if (resultSet.next()) {			
+			return resultSet.getInt("qtd") <= 0;
+		}
+		
+		return false;
+	}
+	
+	public boolean validarSenhaUpdate(String senha, String id) throws Exception {
+		String sql = "select count(1) as qtd from usuario where senha = '" + senha + "' and id <> " + id;
+		PreparedStatement statement = connection.prepareStatement(sql);
+		ResultSet resultSet = statement.executeQuery();
+		
+		if (resultSet.next()) {			
+			return resultSet.getInt("qtd") <= 0;
+		}
+		
+		return false;
+	}
 
 	public void atualizar(BeanCursoJsp usuario) {
 		try {
