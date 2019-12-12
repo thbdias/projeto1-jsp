@@ -52,7 +52,7 @@ public class Usuario extends HttpServlet {
 		
 		String acao = request.getParameter("acao");
 		
-		if (acao != null && acao.equalsIgnoreCase("reset")) {			
+		if (acao != null && acao.equalsIgnoreCase("reset")) { //botão cancelar			
 			try {
 				RequestDispatcher view = request.getRequestDispatcher("cadastroUsuario.jsp");
 				request.setAttribute("usuarios", daoUsuario.listar());
@@ -61,20 +61,22 @@ public class Usuario extends HttpServlet {
 				e.printStackTrace();
 			}			
 		}
-		else {
+		else { //botao salvar
 			String id = request.getParameter("id");
 			String login = request.getParameter("login");
 			String senha = request.getParameter("senha");
 			String nome = request.getParameter("nome");
+			String fone = request.getParameter("fone");
 			
 			BeanCursoJsp usuario = new BeanCursoJsp();
 			usuario.setId(!id.isEmpty()? Long.parseLong(id) : 0);
 			usuario.setLogin(login);
 			usuario.setSenha(senha);
 			usuario.setNome(nome);
+			usuario.setFone(fone);
 			
 			try {
-				if (id == null || id.isEmpty() && !daoUsuario.validarLogin(login)) {
+				if (id == null || id.isEmpty() && !daoUsuario.validarLogin(login)) { //nao deixa cadastrar mais de um login
 					request.setAttribute("msg", "Usuário já existe com o mesmo login!");
 				}				
 				else if (id == null || id.isEmpty() && daoUsuario.validarLogin(login)) { 
