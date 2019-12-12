@@ -16,7 +16,7 @@
 			<img alt="Cadastro de Usuários" title="Cadastro de Usuários" src="resources/img/user.png" width="150px" height="150px">		
 		</a>	
 		
-		<a href="produtoServlet">
+		<a href="produtoServlet?acao=listarTodos">
 			<img alt="Cadastro de Produto" title="Cadastro de Produto" src="resources/img/produtos.png" width="150px" height="150px">
 		</a>
 	</center>
