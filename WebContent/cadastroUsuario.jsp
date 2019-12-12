@@ -63,7 +63,7 @@
 					<th>Editar</th>
 				</tr>
 				<c:forEach items="${usuarios}" var="user">
-					<tr>
+					<tr style="text-align: center; vertical-align: middle">
 						<td style="width: 150px"><c:out value="${user.id}"></c:out></td>
 						<td style="width: 150px"><c:out value="${user.login}"></c:out></td>
 						<td><c:out value="${user.nome}"></c:out></td>
