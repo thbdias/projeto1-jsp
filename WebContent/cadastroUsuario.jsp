@@ -66,12 +66,12 @@
 						<td style="width: 150px"><c:out value="${user.login}"></c:out></td>
 						<td><c:out value="${user.nome}"></c:out></td>
 						<td>
-							<a href="salvarUsuario?acao=delete&user=${user.login}">
+							<a href="salvarUsuario?acao=delete&user=${user.id}">
 								<img alt="Excluir" title="Excluir" src="resources/img/delete.png" width="20px" height="20px">
 							</a>
 						</td>
 						<td>
-							<a href="salvarUsuario?acao=editar&user=${user.login}">
+							<a href="salvarUsuario?acao=editar&user=${user.id}">
 								<img alt="Editar" title="Editar" src="resources/img/editar.png" width="20px" height="20px">
 							</a>
 						</td>
