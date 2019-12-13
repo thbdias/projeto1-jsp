@@ -69,14 +69,32 @@ public class ProdutoServlet extends HttpServlet {
 			
 			produto.setId(!id.isEmpty() ? Long.parseLong(id) : null);
 			produto.setNome(request.getParameter("nome"));
-			produto.setQuantidade(Double.parseDouble(request.getParameter("quant")));
-			produto.setValor(Double.parseDouble(request.getParameter("valor")));
+			
+			if (request.getParameter("quant") != null && !request.getParameter("quant").isEmpty())
+				produto.setQuantidade(Double.parseDouble(request.getParameter("quant")));			
+			
+			if (request.getParameter("valor") != null && !request.getParameter("valor").isEmpty())
+				produto.setValor(Double.parseDouble(request.getParameter("valor")));			 
+				
 			
 			try {
-				if (id == null || id.isEmpty() && daoProduto.validarNomeProduto(produto.getNome())) {
+				
+				if (request.getParameter("nome") == null || request.getParameter("nome").isEmpty()) {//nome não pode vir vazio
+					request.setAttribute("msg", "Nome não pode estar vazio!");
+					request.setAttribute("produto", produto);
+				}
+				else if (request.getParameter("quant") == null || request.getParameter("quant").isEmpty()) {//quantidade não pode vir vazio
+					request.setAttribute("msg", "Quantidade não pode estar vazia!");
+					request.setAttribute("produto", produto);
+				}
+				else if (request.getParameter("valor") == null || request.getParameter("valor").isEmpty()) {//valor não pode vir vazio
+					request.setAttribute("msg", "Valor não pode estar vazio!");
+					request.setAttribute("produto", produto);
+				} 
+				else if (id == null || id.isEmpty() && daoProduto.validarNomeProduto(produto.getNome())) {
 					daoProduto.salvar(produto);
 				}
-				else if (id == null || id.isEmpty() && !daoProduto.validarNomeProduto(produto.getNome())) {
+				else if (id == null || id.isEmpty() && !daoProduto.validarNomeProduto(produto.getNome())) { 
 					request.setAttribute("msg", "Nome já existe para outro produto!");
 					request.setAttribute("produto", produto);
 				}
