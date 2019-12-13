@@ -66,7 +66,7 @@
 					<td><c:out value="${produto.valor}"></c:out></td>
 					<td>
 						<a href="produtoServlet?acao=delete&idProduto=${produto.id}">
-							Excluir
+							<img alt="Excluir" title="Excluir" src="resources/img/delete.png" width="20px" height="20px">
 						</a>
 					</td>
 					<td>
