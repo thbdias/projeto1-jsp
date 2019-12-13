@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import beans.BeanCursoJsp;
 import beans.BeanProduto;
 import connection.SingleConnection;
 
@@ -85,5 +86,52 @@ public class DaoProduto {
 			}
 		}		
 	}
+
+	public BeanProduto consultar(String id) throws Exception {
+		String sql = "select * from produto where id = " + id;
+		PreparedStatement statement = connection.prepareStatement(sql);
+		ResultSet resultSet = statement.executeQuery();
+		
+		if (resultSet.next()) {
+			BeanProduto produto = new BeanProduto();
+			produto.setId(resultSet.getLong("id"));
+			produto.setNome(resultSet.getString("nome"));
+			produto.setQuantidade(resultSet.getDouble("quantidade"));
+			produto.setValor(resultSet.getDouble("valor"));
+			return produto;
+		}
+		
+		return null;
+	}
 	
+	public boolean validarNomeProdutoUpdate(String nomeProduto, Long id) throws Exception {
+		String sql = "select count(1) as qtd from produto where nome = '"+nomeProduto+"' and id <> " + id;
+		PreparedStatement statement = connection.prepareStatement(sql);
+		ResultSet resultSet = statement.executeQuery();
+		
+		if (resultSet.next()) {
+			return resultSet.getInt("qtd") <= 0; 
+		}
+		
+		return false;
+	}
+
+	public void atualizar(BeanProduto produto) {
+		try {
+			String sql = "update produto set nome = ?, quantidade = ?, valor = ? where id = " + produto.getId();
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, produto.getNome());
+			statement.setDouble(2, produto.getQuantidade());
+			statement.setDouble(3, produto.getValor());
+			statement.executeUpdate();
+			connection.commit();
+		} catch (SQLException e) {			
+			try {
+				e.printStackTrace();
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
 }

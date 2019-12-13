@@ -70,8 +70,8 @@
 						</a>
 					</td>
 					<td>
-						<a href="produtoServlet?acao=editar&user=${produto.id}">
-							Editar
+						<a href="produtoServlet?acao=editar&idProduto=${produto.id}">
+							<img alt="Editar" title="Editar" src="resources/img/editar.png" width="20px" height="20px">
 						</a>
 					</td>
 				</tr>				

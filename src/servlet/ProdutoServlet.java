@@ -38,6 +38,12 @@ public class ProdutoServlet extends HttpServlet {
 				request.setAttribute("produtos", daoProduto.listarProdutos());
 				view.forward(request, response);
 			}
+			else if (acao.equalsIgnoreCase("editar")) {
+				BeanProduto produto = daoProduto.consultar(idProduto);
+				RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");
+				request.setAttribute("produto", produto);
+				view.forward(request, response);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -57,9 +63,18 @@ public class ProdutoServlet extends HttpServlet {
 			if (id == null || id.isEmpty() && daoProduto.validarNomeProduto(produto.getNome())) {
 				daoProduto.salvar(produto);
 			}
-			else {
+			else if (id == null || id.isEmpty() && !daoProduto.validarNomeProduto(produto.getNome())) {
 				request.setAttribute("msg", "Nome já existe para outro produto!");
 				request.setAttribute("produto", produto);
+			}
+			else if (id != null && !id.isEmpty()) { //atualizar
+				if (daoProduto.validarNomeProdutoUpdate(produto.getNome(), produto.getId())) {
+					daoProduto.atualizar(produto);
+				}
+				else {
+					request.setAttribute("msg", "Nome já existe para outro produto!");
+					request.setAttribute("produto", produto);
+				}
 			}
 			
 			RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");
