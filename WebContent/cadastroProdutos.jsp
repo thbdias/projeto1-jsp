@@ -65,7 +65,7 @@
 					<td><c:out value="${produto.quantidade}"></c:out></td>
 					<td><c:out value="${produto.valor}"></c:out></td>
 					<td>
-						<a href="produtoServlet?acao=delete&user=${produto.id}">
+						<a href="produtoServlet?acao=delete&idProduto=${produto.id}">
 							Excluir
 						</a>
 					</td>

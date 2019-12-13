@@ -25,12 +25,19 @@ public class ProdutoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		try {
 			String acao = request.getParameter("acao");
+			String idProduto = request.getParameter("idProduto");
 			
 			if (acao.equalsIgnoreCase("listarTodos")) {
 				RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");				
 				request.setAttribute("produtos", daoProduto.listarProdutos());				
 				view.forward(request, response);
-			}	
+			}
+			else if (acao.equalsIgnoreCase("delete")) {
+				daoProduto.delete(idProduto);
+				RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");
+				request.setAttribute("produtos", daoProduto.listarProdutos());
+				view.forward(request, response);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
