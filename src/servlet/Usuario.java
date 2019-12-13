@@ -48,8 +48,7 @@ public class Usuario extends HttpServlet {
 		}		
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		String acao = request.getParameter("acao");
 		
 		if (acao != null && acao.equalsIgnoreCase("reset")) { //botão cancelar			
@@ -75,12 +74,29 @@ public class Usuario extends HttpServlet {
 			usuario.setNome(nome);
 			usuario.setFone(fone);
 			
-			try {
-				if (id == null || id.isEmpty() && !daoUsuario.validarLogin(login)) { //nao deixa cadastrar mais de um login iguais
-					request.setAttribute("msg", "Usuário já existe com o mesmo login!");
+			try {				
+				
+				if (login == null || login.isEmpty()) { //login não pode vir vazio
+					request.setAttribute("msg", "Login não pode estar vazio!");
 					request.setAttribute("user", usuario);
 				}
-				if (id == null || id.isEmpty() && !daoUsuario.validarSenha(senha)) { //não deixa cadastrar mais de uma senha iguais
+				else if (senha == null || senha.isEmpty()) { //senha não pode vir vazio
+					request.setAttribute("msg", "Senha não pode estar vazia!");
+					request.setAttribute("user", usuario);
+				}
+				else if (nome == null || nome.isEmpty()) { //nome não pode vir vazio
+					request.setAttribute("msg", "Nome não pode estar vazio!");
+					request.setAttribute("user", usuario);
+				} 
+				else if (fone == null || fone.isEmpty()) { //fone não pode vir vazio
+					request.setAttribute("msg", "Fone não pode estar vazio!");
+					request.setAttribute("user", usuario);
+				}
+				else if (id == null || id.isEmpty() && !daoUsuario.validarLogin(login)) { //nao deixa cadastrar mais de um login iguais
+					request.setAttribute("msg", "Usuário já existe com o mesmo login!");
+					request.setAttribute("user", usuario);
+				} 
+				else if (id == null || id.isEmpty() && !daoUsuario.validarSenha(senha)) { //não deixa cadastrar mais de uma senha iguais
 					request.setAttribute("msg", "Senha já existe para outro usuário!");
 					request.setAttribute("user", usuario);
 				}
@@ -108,7 +124,6 @@ public class Usuario extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
-		}
-		
-	}
+		}		
+	}		
 }
