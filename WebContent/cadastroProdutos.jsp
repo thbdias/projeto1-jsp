@@ -15,7 +15,7 @@
 		<h3 style="color: red">${msg}</h3>
 	</center>
 
-	<form action="produtoServlet" method="post">
+	<form action="produtoServlet" method="post" id="formUser">
 		<ul class="form-style-1">
 			<li>
 				<table>
@@ -38,7 +38,10 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="submit" value="Salvar"></td>
+						<td>
+							<input type="submit" value="Salvar">
+							<input type="submit" value="Cancelar" onclick="document.getElementById('formUser').action = 'produtoServlet?acao=reset'">
+						</td>
 					</tr>
 				</table>
 			</li>

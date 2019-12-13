@@ -50,38 +50,52 @@ public class ProdutoServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BeanProduto produto = new BeanProduto();
 		
-		String id = request.getParameter("id");
+		String acao = request.getParameter("acao");
 		
-		produto.setId(!id.isEmpty() ? Long.parseLong(id) : null);
-		produto.setNome(request.getParameter("nome"));
-		produto.setQuantidade(Double.parseDouble(request.getParameter("quant")));
-		produto.setValor(Double.parseDouble(request.getParameter("valor")));
-		
-		try {
-			if (id == null || id.isEmpty() && daoProduto.validarNomeProduto(produto.getNome())) {
-				daoProduto.salvar(produto);
-			}
-			else if (id == null || id.isEmpty() && !daoProduto.validarNomeProduto(produto.getNome())) {
-				request.setAttribute("msg", "Nome já existe para outro produto!");
-				request.setAttribute("produto", produto);
-			}
-			else if (id != null && !id.isEmpty()) { //atualizar
-				if (daoProduto.validarNomeProdutoUpdate(produto.getNome(), produto.getId())) {
-					daoProduto.atualizar(produto);
+		if (acao != null && acao.equalsIgnoreCase("reset")) { //botão cancelar			
+			try {
+				RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");
+				request.setAttribute("produtos", daoProduto.listarProdutos());
+				view.forward(request, response); //faz o redirecionamento
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
+		}
+		else {			
+			BeanProduto produto = new BeanProduto();
+			
+			String id = request.getParameter("id");
+			
+			produto.setId(!id.isEmpty() ? Long.parseLong(id) : null);
+			produto.setNome(request.getParameter("nome"));
+			produto.setQuantidade(Double.parseDouble(request.getParameter("quant")));
+			produto.setValor(Double.parseDouble(request.getParameter("valor")));
+			
+			try {
+				if (id == null || id.isEmpty() && daoProduto.validarNomeProduto(produto.getNome())) {
+					daoProduto.salvar(produto);
 				}
-				else {
+				else if (id == null || id.isEmpty() && !daoProduto.validarNomeProduto(produto.getNome())) {
 					request.setAttribute("msg", "Nome já existe para outro produto!");
 					request.setAttribute("produto", produto);
 				}
+				else if (id != null && !id.isEmpty()) { //atualizar
+					if (daoProduto.validarNomeProdutoUpdate(produto.getNome(), produto.getId())) {
+						daoProduto.atualizar(produto);
+					}
+					else {
+						request.setAttribute("msg", "Nome já existe para outro produto!");
+						request.setAttribute("produto", produto);
+					}
+				}
+				
+				RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");
+				request.setAttribute("produtos", daoProduto.listarProdutos());
+				view.forward(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-			
-			RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");
-			request.setAttribute("produtos", daoProduto.listarProdutos());
-			view.forward(request, response);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}		
+		}
 	}
 }
