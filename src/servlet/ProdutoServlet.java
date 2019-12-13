@@ -22,9 +22,18 @@ public class ProdutoServlet extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");
-		view.forward(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		try {
+			String acao = request.getParameter("acao");
+			
+			if (acao.equalsIgnoreCase("listarTodos")) {
+				RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");				
+				request.setAttribute("produtos", daoProduto.listarProdutos());				
+				view.forward(request, response);
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
