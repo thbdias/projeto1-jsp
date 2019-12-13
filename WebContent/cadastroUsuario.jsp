@@ -108,10 +108,7 @@
 				return false;
 			}
 			return true;
-		}
-	
-	
-		
+		}		
 	</script>	
 
 </body>

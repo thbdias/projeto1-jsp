@@ -15,7 +15,7 @@
 		<h3 style="color: red">${msg}</h3>
 	</center>
 
-	<form action="produtoServlet" method="post" id="formUser">
+	<form action="produtoServlet" method="post" id="formUser" onsubmit="return validarCampos() ? true : false;">
 		<ul class="form-style-1">
 			<li>
 				<table>
@@ -80,7 +80,25 @@
 				</tr>				
 			</c:forEach>
 		</table>
-	</div>
+	</div>	
+	
+	<script type="text/javascript">
+		function validarCampos() {
+			if (document.getElementById("nome").value == ''){
+				alert('Informe o Nome!');
+				return false;
+			}		
+			else if (document.getElementById("quant").value == ''){
+				alert('Informe a Quantidade!');
+				return false;
+			}
+			else if (document.getElementById("valor").value == ''){
+				alert('Informe o Valor!');
+				return false;
+			}			
+			return true;
+		}		
+	</script>	
 </body>
 </html>
 
