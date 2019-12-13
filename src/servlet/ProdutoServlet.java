@@ -37,9 +37,15 @@ public class ProdutoServlet extends HttpServlet {
 		produto.setQuantidade(Double.parseDouble(request.getParameter("quant")));
 		produto.setValor(Double.parseDouble(request.getParameter("valor")));
 		
-		daoProduto.salvar(produto);		
-		
 		try {
+			if (id == null || id.isEmpty() && daoProduto.validarNomeProduto(produto.getNome())) {
+				daoProduto.salvar(produto);
+			}
+			else {
+				request.setAttribute("msg", "Nome já existe para outro produto!");
+				request.setAttribute("produto", produto);
+			}
+			
 			RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");
 			request.setAttribute("produtos", daoProduto.listarProdutos());
 			view.forward(request, response);

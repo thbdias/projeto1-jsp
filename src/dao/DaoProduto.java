@@ -56,4 +56,16 @@ public class DaoProduto {
 		
 		return produtos;
 	}
+	
+	public boolean validarNomeProduto(String nomeProduto) throws Exception {
+		String sql = "select count(1) as qtd from produto where nome = '"+nomeProduto+"'";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		ResultSet resultSet = statement.executeQuery();
+		
+		if (resultSet.next()) {
+			return resultSet.getInt("qtd") <= 0; 
+		}
+		
+		return false;
+	}
 }

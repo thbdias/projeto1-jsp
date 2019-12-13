@@ -12,6 +12,7 @@
 <body>
 	<center>
 		<h1>Cadastro de Produto</h1>
+		<h3 style="color: red">${msg}</h3>
 	</center>
 
 	<form action="produtoServlet" method="post">
@@ -21,19 +22,19 @@
 					<tr>
 						<td>Código:</td>
 						<td><input type="text" readonly="readonly" id="id" name="id"
-							class="field-long"></td>
+							class="field-long" value="${produto.id}"></td>
 					</tr>
 					<tr>
 						<td>Nome:</td>
-						<td><input type="text" id="nome" name="nome"></td>
+						<td><input type="text" id="nome" name="nome" value="${produto.nome}"></td>
 					</tr>
 					<tr>
 						<td>Quantidade:</td>
-						<td><input type="text" id="quant" name="quant"></td>
+						<td><input type="text" id="quant" name="quant" value="${produto.quantidade}"></td>
 					</tr>
 					<tr>
 						<td>Valor:</td>
-						<td><input type="text" id="valor" name="valor"></td>
+						<td><input type="text" id="valor" name="valor" value="${produto.valor}"></td>
 					</tr>
 					<tr>
 						<td></td>
