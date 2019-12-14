@@ -68,7 +68,13 @@
 					
 						<td>IBGE:</td>
 						<td><input type="text" id="ibge" name="ibge" value="${user.ibge}" placeholder="Informe cod. IBGE"></td>
-					</tr>				
+					</tr>					
+					<tr>
+						<td>
+							Foto:
+						</td>
+						<td><input type="file"></td>
+					</tr>			
 					<tr>
 						<td></td>
 						<td>
