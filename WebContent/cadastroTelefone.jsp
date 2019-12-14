@@ -21,21 +21,21 @@
 		<h3 style="color: orange">${msg}</h3>
 	</center>
 	
-	<form action="salvarUsuario" method="post" id="formUser" onsubmit="return validarCampos() ? true : false; ">
+	<form action="telefoneServlet" method="post" id="formUser" onsubmit="return validarCampos() ? true : false; ">
 		<ul class="form-style-1">
 			<li>
 				<table>
 					<tr>
 						<td>Usuário:</td>
-						<td><input type="text" readonly="readonly" id="id" name="id" class="field-long"></td>														
-						<td><input type="text" readonly="readonly" id="nome" name="nome"></td>											
+						<td><input type="text" readonly="readonly" id="id" name="id" class="field-long" value="${userSession.id}"></td>														
+						<td><input type="text" readonly="readonly" id="nome" name="nome" value="${userSession.nome}"></td>											
 					</tr>
 					<tr>
 						<td>Número:</td>
 						<td><input type="text" id="numero" name="numero"></td>
 					
 						<td>
-							<select id="tipo">
+							<select id="tipo" name="tipo">
 								<option>Casa</option>
 								<option>Contato</option>
 								<option>Celular</option>
@@ -72,7 +72,7 @@
 						<td><c:out value="${fone.numero}"></c:out></td>
 						<td><c:out value="${fone.tipo}"></c:out></td>						
 						<td>
-							<a href="salvarUsuario?acao=delete&user=${user.id}">
+							<a href="telefoneServlet?acao=delete&idFone=${fone.id}">
 								<img alt="Excluir" title="Excluir" src="resources/img/delete.png" width="20px" height="20px">
 							</a>
 						</td>						

@@ -28,6 +28,8 @@ public class TelefoneServlet extends HttpServlet {
 			String idUser = request.getParameter("idUser");
 			BeanCursoJsp usuario = daoUsuario.consultar(idUser);
 			
+			request.getSession().setAttribute("userSession", usuario);			
+			
 			RequestDispatcher view = request.getRequestDispatcher("cadastroTelefone.jsp");
 			view.forward(request, response);
 		} catch (Exception e) {
@@ -36,6 +38,11 @@ public class TelefoneServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		BeanCursoJsp usuario = (BeanCursoJsp) request.getSession().getAttribute("userSession");
+		
+		String numero = request.getParameter("numero");
+		String tipo = request.getParameter("tipo");
 	}
 
 }
