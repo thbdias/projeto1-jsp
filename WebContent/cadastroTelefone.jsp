@@ -71,7 +71,7 @@
 						<td style="width: 150px"><c:out value="${fone.numero}"></c:out></td>
 						<td><c:out value="${fone.tipo}"></c:out></td>												
 						<td>
-							<a href="telefoneServlet?acao=delete&idFone=${fone.id}">
+							<a href="telefoneServlet?acao=delete&idFone=${fone.id}&idUser=${userSession.id}">
 								<img alt="Excluir" title="Excluir" src="resources/img/delete.png" width="20px" height="20px">
 							</a>
 						</td>						

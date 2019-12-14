@@ -28,15 +28,22 @@ public class TelefoneServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		try {
-			String idUser = request.getParameter("idUser");
-			BeanCursoJsp usuario = daoUsuario.consultar(idUser);
+			String idUser = request.getParameter("idUser");			
+			BeanCursoJsp usuario = null; 
 			String acao = request.getParameter("acao");
+			String idFone = request.getParameter("idFone");						
 			
 			if (acao.equalsIgnoreCase("listarTodos")) {
-				request.setAttribute("telefones", daoTelefone.listarTelefones(usuario.getId()));
+				usuario = daoUsuario.consultar(idUser);
+				request.setAttribute("telefones", daoTelefone.listarTelefones(usuario.getId()));				
 			}
+			else if (acao.equalsIgnoreCase("delete")) {
+				daoTelefone.delete(idFone);
+				usuario = daoUsuario.consultar(idUser);
+				request.setAttribute("telefones", daoTelefone.listarTelefones(usuario.getId()));
+			}			
 			
-			request.getSession().setAttribute("userSession", usuario);
+			request.getSession().setAttribute("userSession", usuario);			
 			
 			RequestDispatcher view = request.getRequestDispatcher("cadastroTelefone.jsp");
 			view.forward(request, response);
