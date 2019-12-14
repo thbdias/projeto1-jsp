@@ -23,7 +23,7 @@
 		<h3 style="color: orange">${msg}</h3>
 	</center>
 	
-	<form action="salvarUsuario" method="post" id="formUser" onsubmit="return validarCampos() ? true : false; ">
+	<form action="salvarUsuario" method="post" id="formUser" onsubmit="return validarCampos() ? true : false;" enctype="multipart/form-data">
 		<ul class="form-style-1">
 			<li>
 				<table>
