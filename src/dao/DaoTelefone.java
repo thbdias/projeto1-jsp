@@ -41,25 +41,25 @@ public class DaoTelefone {
 		}		
 	}
 	
-//	public List<BeanProduto> listarProdutos() throws Exception{
-//		List<BeanProduto> produtos = new ArrayList<BeanProduto>();
-//		BeanProduto produto = null;		
-//		
-//		String sql = "select * from produto";
-//		PreparedStatement statement = connection.prepareStatement(sql);
-//		ResultSet resultSet = statement.executeQuery();
-//	
-//		while(resultSet.next()) {
-//			produto = new BeanProduto();
-//			produto.setId(resultSet.getLong("id"));
-//			produto.setNome(resultSet.getString("nome"));
-//			produto.setQuantidade(resultSet.getDouble("quantidade"));
-//			produto.setValor(resultSet.getDouble("valor"));
-//			produtos.add(produto);
-//		}		
-//		
-//		return produtos;
-//	}
+	public List<BeanTelefone> listarTelefones() throws Exception{
+		List<BeanTelefone> telefones = new ArrayList<BeanTelefone>();
+		BeanTelefone telefone = null;		
+		
+		String sql = "select * from telefone";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		ResultSet resultSet = statement.executeQuery();
+	
+		while(resultSet.next()) {
+			telefone = new BeanTelefone();
+			telefone.setId(resultSet.getLong("id"));
+			telefone.setNumero(resultSet.getString("numero"));
+			telefone.setTipo(resultSet.getString("tipo"));
+			telefone.setUsuario(resultSet.getLong("usuario"));
+			telefones.add(telefone);
+		}		
+		
+		return telefones;
+	}
 	
 //	public boolean validarNomeProduto(String nomeProduto) throws Exception {
 //		String sql = "select count(1) as qtd from produto where nome = '"+nomeProduto+"'";
