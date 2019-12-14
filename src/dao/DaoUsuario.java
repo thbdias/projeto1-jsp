@@ -22,8 +22,8 @@ public class DaoUsuario {
 		try {
 			StringBuffer sql = new StringBuffer(); 
 			sql.append(" insert into Usuario");
-			sql.append(" (login, senha, nome, fone, cep, rua, bairro, cidade, estado, ibge)");
-			sql.append(" values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			sql.append(" (login, senha, nome, fone, cep, rua, bairro, cidade, estado, ibge, fotoBase64, contentTypeArquivo)");
+			sql.append(" values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			PreparedStatement statement = connection.prepareStatement(sql.toString());
 			statement.setString(1, usuario.getLogin());
 			statement.setString(2, usuario.getSenha());
@@ -35,6 +35,8 @@ public class DaoUsuario {
 			statement.setString(8, usuario.getCidade());
 			statement.setString(9, usuario.getEstado());
 			statement.setString(10, usuario.getIbge());
+			statement.setString(11, usuario.getFotoBase64());
+			statement.setString(12, usuario.getContentTypeArquivo());
 			statement.execute();
 			connection.commit();
 		} catch (Exception e) {
