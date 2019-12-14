@@ -15,9 +15,16 @@ public class BeanCursoJsp {
 	private String ibge;
 	private String fotoBase64;
 	private String contentTypeArquivo;
+	private String tempFotoUser;
 	
-	
-	
+	public String getTempFotoUser() {		
+		tempFotoUser =  "data:";
+		tempFotoUser += getContentTypeArquivo();
+		tempFotoUser += ";base64,";
+		tempFotoUser += getFotoBase64();
+		
+		return tempFotoUser;
+	}
 	
 	
 	public String getFotoBase64() {

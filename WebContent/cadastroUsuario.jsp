@@ -23,7 +23,7 @@
 		<h3 style="color: orange">${msg}</h3>
 	</center>
 	
-	<form action="salvarUsuario" method="post" id="formUser" onsubmit="return validarCampos() ? true : false;" enctype="multipart/form-data">
+	<form action="salvarUsuario" method="post" id="formUser" onsubmit="return validarCampos() ? true : false; " enctype="multipart/form-data">
 		<ul class="form-style-1">
 			<li>
 				<table>
@@ -68,13 +68,13 @@
 					
 						<td>IBGE:</td>
 						<td><input type="text" id="ibge" name="ibge" value="${user.ibge}" placeholder="Informe cod. IBGE"></td>
-					</tr>					
+					</tr>
 					<tr>
 						<td>
 							Foto:
 						</td>
-						<td><input type="file" name="foto" value="Foto"></td>
-					</tr>			
+						<td><input type="file" id="foto" name="foto"></td>
+					</tr>					
 					<tr>
 						<td></td>
 						<td>
@@ -95,6 +95,7 @@
 				<tr>
 					<th>Id</th>
 					<th>Login</th>
+					<th>Img</th>
 					<th>Nome</th>
 					<th>Fone</th>
 					<th>Cep</th>
@@ -109,8 +110,11 @@
 				</tr>
 				<c:forEach items="${usuarios}" var="user">
 					<tr style="text-align: center; vertical-align: middle">
-						<td style="width: 150px"><c:out value="${user.id}"></c:out></td>
-						<td style="width: 150px"><c:out value="${user.login}"></c:out></td>
+						<td><c:out value="${user.id}"></c:out></td>
+						<td><c:out value="${user.login}"></c:out></td>
+						<td>
+							<img src='<c:out value="${user.tempFotoUser}"></c:out>' width="20px" height="20px">
+						</td>
 						<td><c:out value="${user.nome}"></c:out></td>
 						<td><c:out value="${user.fone}"></c:out></td>
 						<td><c:out value="${user.cep}"></c:out></td>
