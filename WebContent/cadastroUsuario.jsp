@@ -52,27 +52,27 @@
 					</tr>	
 					<tr>
 						<td>Cep:</td>
-						<td><input type="text" id="cep" name="cep" onblur="consultaCep();"></td>
+						<td><input type="text" id="cep" name="cep" onblur="consultaCep();" value="${user.cep}"></td>
 					</tr>
 					<tr>
 						<td>Rua:</td>
-						<td><input type="text" id="rua" name="rua"></td>
+						<td><input type="text" id="rua" name="rua" value="${user.rua}"></td>
 					</tr>
 					<tr>
 						<td>Bairro:</td>
-						<td><input type="text" id="bairro" name="bairro"></td>
+						<td><input type="text" id="bairro" name="bairro" value="${user.bairro}"></td>
 					</tr>
 					<tr>
 						<td>Cidade:</td>
-						<td><input type="text" id="cidade" name="cidade"></td>
+						<td><input type="text" id="cidade" name="cidade" value="${user.cidade}"></td>
 					</tr>
 					<tr>
 						<td>Estado:</td>
-						<td><input type="text" id="estado" name="estado"></td>
+						<td><input type="text" id="estado" name="estado" value="${user.estado}"></td>
 					</tr>
 					<tr>
 						<td>IBGE:</td>
-						<td><input type="text" id="ibge" name="ibge"></td>
+						<td><input type="text" id="ibge" name="ibge" value="${user.ibge}"></td>
 					</tr>				
 					<tr>
 						<td></td>
@@ -96,6 +96,12 @@
 					<th>Login</th>
 					<th>Nome</th>
 					<th>Fone</th>
+					<th>Cep</th>
+					<th>Rua</th>
+					<th>Bairro</th>
+					<th>Cidade</th>
+					<th>Estado</th>
+					<th>IBGE</th>
 					<th>Delete</th>
 					<th>Editar</th>
 				</tr>
@@ -105,6 +111,12 @@
 						<td style="width: 150px"><c:out value="${user.login}"></c:out></td>
 						<td><c:out value="${user.nome}"></c:out></td>
 						<td><c:out value="${user.fone}"></c:out></td>
+						<td><c:out value="${user.cep}"></c:out></td>
+						<td><c:out value="${user.rua}"></c:out></td>
+						<td><c:out value="${user.bairro}"></c:out></td>
+						<td><c:out value="${user.cidade}"></c:out></td>
+						<td><c:out value="${user.estado}"></c:out></td>
+						<td><c:out value="${user.ibge}"></c:out></td>
 						<td>
 							<a href="salvarUsuario?acao=delete&user=${user.id}">
 								<img alt="Excluir" title="Excluir" src="resources/img/delete.png" width="20px" height="20px">
