@@ -124,7 +124,7 @@
 							</a>
 						</td>
 						<td>
-							<a href="">
+							<a href="telefoneServlet?idUser=${user.id}">
 								<img alt="Cadastrar Telefones" title="Cadastrar Telefones" src="resources/img/phone.png" width="20px" height="20px">
 							</a>
 						</td>
