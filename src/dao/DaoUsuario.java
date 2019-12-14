@@ -71,6 +71,8 @@ public class DaoUsuario {
 			usuario.setCidade(resultSet.getString("cidade"));
 			usuario.setEstado(resultSet.getString("estado"));
 			usuario.setIbge(resultSet.getString("ibge"));
+			usuario.setFotoBase64(resultSet.getString("fotoBase64"));
+			usuario.setContentTypeArquivo(resultSet.getString("contentTypeArquivo"));
 			listBeanCursoJsp.add(usuario);
 		}
 		
@@ -111,6 +113,8 @@ public class DaoUsuario {
 			usuario.setCidade(resultSet.getString("cidade"));
 			usuario.setEstado(resultSet.getString("estado"));
 			usuario.setIbge(resultSet.getString("ibge"));
+			usuario.setFotoBase64(resultSet.getString("fotoBase64"));
+			usuario.setContentTypeArquivo(resultSet.getString("contentTypeArquivo"));
 			return usuario;
 		}
 		
@@ -171,7 +175,7 @@ public class DaoUsuario {
 			sql.append(" update usuario set ");
 			sql.append(" login = ?, senha = ?, nome = ?, fone = ?, ");
 			sql.append(" cep = ?, rua = ?, bairro = ?, cidade = ?, ");
-			sql.append(" estado = ?, ibge = ? ");			
+			sql.append(" estado = ?, ibge = ?, fotoBase64 = ?, contentTypeArquivo = ? ");			
 			sql.append(" where id = " + usuario.getId());
 			PreparedStatement statement = connection.prepareStatement(sql.toString());
 			statement.setString(1, usuario.getLogin());
@@ -184,6 +188,8 @@ public class DaoUsuario {
 			statement.setString(8, usuario.getCidade());
 			statement.setString(9, usuario.getEstado());
 			statement.setString(10, usuario.getIbge());
+			statement.setString(11, usuario.getFotoBase64());
+			statement.setString(12, usuario.getContentTypeArquivo());
 			statement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {			
