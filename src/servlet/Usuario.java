@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import beans.BeanCursoJsp;
 import dao.DaoUsuario;
@@ -76,7 +80,17 @@ public class Usuario extends HttpServlet {
 			String ibge = request.getParameter("ibge");
 			
 			BeanCursoJsp usuario = new BeanCursoJsp();
-			usuario.setId(!id.isEmpty()? Long.parseLong(id) : null);
+			
+			if (id != null) {
+				if (!id.isEmpty()) 
+					usuario.setId(Long.parseLong(id));				
+				else 
+					usuario.setId(null);				
+			}
+			else 
+				usuario.setId(null);			
+			
+			
 			usuario.setLogin(login);
 			usuario.setSenha(senha);
 			usuario.setNome(nome);
@@ -93,6 +107,19 @@ public class Usuario extends HttpServlet {
 				/*Inicio File upload de imagens e pdf*/
 				
 				if (ServletFileUpload.isMultipartContent(request)) {
+					
+					//recuperando todos os campos da tela
+					List<FileItem> fileItems = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request); 
+										
+					for (FileItem fileItem : fileItems) {
+						//achando o campo da foto
+						if (fileItem.getFieldName().equals("foto")) {
+							//base 64 é o tipo que tem que gravar no banco de dados
+							String foto = new Base64().encodeBase64String(fileItem.get());
+						}
+						
+						
+					}
 					
 				}
 				

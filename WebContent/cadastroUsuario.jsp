@@ -73,7 +73,7 @@
 						<td>
 							Foto:
 						</td>
-						<td><input type="file"></td>
+						<td><input type="file" name="foto" value="Foto"></td>
 					</tr>			
 					<tr>
 						<td></td>
