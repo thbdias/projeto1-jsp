@@ -41,6 +41,7 @@ public class TelefoneServlet extends HttpServlet {
 				daoTelefone.delete(idFone);
 				usuario = daoUsuario.consultar(idUser);
 				request.setAttribute("telefones", daoTelefone.listarTelefones(usuario.getId()));
+				request.setAttribute("msg", "Telefone remevido com sucesso!");
 			}			
 			
 			request.getSession().setAttribute("userSession", usuario);			
