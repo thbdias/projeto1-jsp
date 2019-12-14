@@ -41,11 +41,11 @@ public class DaoTelefone {
 		}		
 	}
 	
-	public List<BeanTelefone> listarTelefones() throws Exception{
+	public List<BeanTelefone> listarTelefones(Long idUser) throws Exception{
 		List<BeanTelefone> telefones = new ArrayList<BeanTelefone>();
 		BeanTelefone telefone = null;		
 		
-		String sql = "select * from telefone";
+		String sql = "select * from telefone where usuario = " + idUser;
 		PreparedStatement statement = connection.prepareStatement(sql);
 		ResultSet resultSet = statement.executeQuery();
 	
@@ -60,18 +60,6 @@ public class DaoTelefone {
 		
 		return telefones;
 	}
-	
-//	public boolean validarNomeProduto(String nomeProduto) throws Exception {
-//		String sql = "select count(1) as qtd from produto where nome = '"+nomeProduto+"'";
-//		PreparedStatement statement = connection.prepareStatement(sql);
-//		ResultSet resultSet = statement.executeQuery();
-//		
-//		if (resultSet.next()) {
-//			return resultSet.getInt("qtd") <= 0; 
-//		}
-//		
-//		return false;
-//	}
 
 	public void delete(String id) {		
 		try {
@@ -90,51 +78,5 @@ public class DaoTelefone {
 		}		
 	}
 
-//	public BeanProduto consultar(String id) throws Exception {
-//		String sql = "select * from produto where id = " + id;
-//		PreparedStatement statement = connection.prepareStatement(sql);
-//		ResultSet resultSet = statement.executeQuery();
-//		
-//		if (resultSet.next()) {
-//			BeanProduto produto = new BeanProduto();
-//			produto.setId(resultSet.getLong("id"));
-//			produto.setNome(resultSet.getString("nome"));
-//			produto.setQuantidade(resultSet.getDouble("quantidade"));
-//			produto.setValor(resultSet.getDouble("valor"));
-//			return produto;
-//		}
-//		
-//		return null;
-//	}
 	
-//	public boolean validarNomeProdutoUpdate(String nomeProduto, Long id) throws Exception {
-//		String sql = "select count(1) as qtd from produto where nome = '"+nomeProduto+"' and id <> " + id;
-//		PreparedStatement statement = connection.prepareStatement(sql);
-//		ResultSet resultSet = statement.executeQuery();
-//		
-//		if (resultSet.next()) {
-//			return resultSet.getInt("qtd") <= 0; 
-//		}
-//		
-//		return false;
-//	}
-
-//	public void atualizar(BeanProduto produto) {
-//		try {
-//			String sql = "update produto set nome = ?, quantidade = ?, valor = ? where id = " + produto.getId();
-//			PreparedStatement statement = connection.prepareStatement(sql);
-//			statement.setString(1, produto.getNome());
-//			statement.setDouble(2, produto.getQuantidade());
-//			statement.setDouble(3, produto.getValor());
-//			statement.executeUpdate();
-//			connection.commit();
-//		} catch (SQLException e) {			
-//			try {
-//				e.printStackTrace();
-//				connection.rollback();
-//			} catch (SQLException e1) {
-//				e1.printStackTrace();
-//			}
-//		}
-//	}
 }
