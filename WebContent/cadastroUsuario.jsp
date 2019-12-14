@@ -20,7 +20,7 @@
 
 	<center>
 		<h1>Cadastro de Usuário</h1>	
-		<h3 style="color: red">${msg}</h3>
+		<h3 style="color: orange">${msg}</h3>
 	</center>
 	
 	<form action="salvarUsuario" method="post" id="formUser" onsubmit="return validarCampos() ? true : false; ">
@@ -36,8 +36,7 @@
 						<td>Nome:</td>
 						<td><input type="text" id="nome" name="nome"
 							value="${user.nome}"></td>
-					</tr>
-					<tr>
+					
 						<td>Fone:</td>
 						<td><input type="text" id="fone" name="fone"
 							value="${user.fone}"></td>
@@ -45,32 +44,28 @@
 					<tr>
 						<td>Login:</td>
 						<td><input type="text" id="login" name="login" value="${user.login}"></td>
-					</tr>
-					<tr>
+					
 						<td>Senha:</td>
 						<td><input type="password" id="senha" name="senha" value="${user.senha}"></td>
 					</tr>	
 					<tr>
 						<td>Cep:</td>
 						<td><input type="text" id="cep" name="cep" onblur="consultaCep();" value="${user.cep}"></td>
-					</tr>
-					<tr>
+					
 						<td>Rua:</td>
 						<td><input type="text" id="rua" name="rua" value="${user.rua}"></td>
 					</tr>
 					<tr>
 						<td>Bairro:</td>
 						<td><input type="text" id="bairro" name="bairro" value="${user.bairro}"></td>
-					</tr>
-					<tr>
+					
 						<td>Cidade:</td>
 						<td><input type="text" id="cidade" name="cidade" value="${user.cidade}"></td>
 					</tr>
 					<tr>
 						<td>Estado:</td>
 						<td><input type="text" id="estado" name="estado" value="${user.estado}"></td>
-					</tr>
-					<tr>
+					
 						<td>IBGE:</td>
 						<td><input type="text" id="ibge" name="ibge" value="${user.ibge}"></td>
 					</tr>				
