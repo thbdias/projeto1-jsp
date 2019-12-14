@@ -30,15 +30,15 @@
 					</tr>
 					<tr>
 						<td>Nome:</td>
-						<td><input type="text" id="nome" name="nome" value="${produto.nome}"></td>
+						<td><input type="text" id="nome" name="nome" value="${produto.nome}" placeholder="Nome do produto"></td>
 					</tr>
 					<tr>
 						<td>Quantidade:</td>
-						<td><input type="text" id="quant" name="quant" value="${produto.quantidade}"></td>
+						<td><input type="text" id="quant" name="quant" value="${produto.quantidade}" placeholder="Informe a quantidade"></td>
 					</tr>
 					<tr>
 						<td>Valor:</td>
-						<td><input type="text" id="valor" name="valor" value="${produto.valor}"></td>
+						<td><input type="text" id="valor" name="valor" value="${produto.valor}" placeholder="Informe o valor"></td>
 					</tr>
 					<tr>
 						<td></td>
