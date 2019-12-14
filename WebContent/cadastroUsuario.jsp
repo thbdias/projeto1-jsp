@@ -99,6 +99,7 @@
 					<th>IBGE</th>
 					<th>Delete</th>
 					<th>Editar</th>
+					<th>Fones</th>
 				</tr>
 				<c:forEach items="${usuarios}" var="user">
 					<tr style="text-align: center; vertical-align: middle">
@@ -120,6 +121,11 @@
 						<td>
 							<a href="salvarUsuario?acao=editar&user=${user.id}">
 								<img alt="Editar" title="Editar" src="resources/img/editar.png" width="20px" height="20px">
+							</a>
+						</td>
+						<td>
+							<a href="">
+								<img alt="Cadastrar Telefones" title="Cadastrar Telefones" src="resources/img/phone.png" width="20px" height="20px">
 							</a>
 						</td>
 					</tr>
