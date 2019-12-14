@@ -73,22 +73,22 @@ public class DaoTelefone {
 //		return false;
 //	}
 
-//	public void delete(String id) {		
-//		try {
-//			String sql = "delete from produto where id = " + id;
-//			PreparedStatement statement;
-//			statement = connection.prepareStatement(sql);
-//			statement.execute();
-//			connection.commit();
-//		} catch (SQLException e) {			
-//			try {
-//				e.printStackTrace();
-//				connection.rollback();
-//			} catch (SQLException e1) {
-//				e1.printStackTrace();
-//			}
-//		}		
-//	}
+	public void delete(String id) {		
+		try {
+			String sql = "delete from telefone where id = " + id;
+			PreparedStatement statement;
+			statement = connection.prepareStatement(sql);
+			statement.execute();
+			connection.commit();
+		} catch (SQLException e) {			
+			try {
+				e.printStackTrace();
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}		
+	}
 
 //	public BeanProduto consultar(String id) throws Exception {
 //		String sql = "select * from produto where id = " + id;
