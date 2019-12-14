@@ -30,8 +30,13 @@ public class TelefoneServlet extends HttpServlet {
 		try {
 			String idUser = request.getParameter("idUser");
 			BeanCursoJsp usuario = daoUsuario.consultar(idUser);
+			String acao = request.getParameter("acao");
 			
-			request.getSession().setAttribute("userSession", usuario);			
+			if (acao.equalsIgnoreCase("listarTodos")) {
+				request.setAttribute("telefones", daoTelefone.listarTelefones(usuario.getId()));
+			}
+			
+			request.getSession().setAttribute("userSession", usuario);
 			
 			RequestDispatcher view = request.getRequestDispatcher("cadastroTelefone.jsp");
 			view.forward(request, response);
