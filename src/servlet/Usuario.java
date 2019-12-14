@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
 import beans.BeanCursoJsp;
 import dao.DaoUsuario;
 
@@ -86,7 +88,15 @@ public class Usuario extends HttpServlet {
 			usuario.setEstado(estado);
 			usuario.setIbge(ibge);
 			
-			try {				
+			try {		
+				
+				/*Inicio File upload de imagens e pdf*/
+				
+				if (ServletFileUpload.isMultipartContent(request)) {
+					
+				}
+				
+				/*Fim    File upload de imagens e pdf*/
 				
 				if (login == null || login.isEmpty()) { //login não pode vir vazio
 					request.setAttribute("msg", "Login não pode estar vazio!");
