@@ -13,10 +13,29 @@ public class BeanCursoJsp {
 	private String cidade;
 	private String estado;
 	private String ibge;
+	private String fotoBase64;
+	private String contentTypeArquivo;
 	
 	
 	
 	
+	
+	public String getFotoBase64() {
+		return fotoBase64;
+	}
+
+	public void setFotoBase64(String fotoBase64) {
+		this.fotoBase64 = fotoBase64;
+	}
+
+	public String getContentTypeArquivo() {
+		return contentTypeArquivo;
+	}
+
+	public void setContentTypeArquivo(String contentTypeArquivo) {
+		this.contentTypeArquivo = contentTypeArquivo;
+	}
+
 	public String getCep() {
 		return cep;
 	}

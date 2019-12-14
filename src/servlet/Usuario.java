@@ -115,7 +115,8 @@ public class Usuario extends HttpServlet {
 						//achando o campo da foto
 						if (fileItem.getFieldName().equals("foto")) {
 							//base 64 é o tipo que tem que gravar no banco de dados
-							String foto = new Base64().encodeBase64String(fileItem.get());
+							String fotoBase64 = new Base64().encodeBase64String(fileItem.get());
+							String contentTypeArquivo = fileItem.getContentType();
 						}
 						
 						
