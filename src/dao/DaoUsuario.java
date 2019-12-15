@@ -181,7 +181,7 @@ public class DaoUsuario {
 			sql.append(" update usuario set ");
 			sql.append(" login = ?, senha = ?, nome = ?, fone = ?, ");
 			sql.append(" cep = ?, rua = ?, bairro = ?, cidade = ?, ");
-			sql.append(" estado = ?, ibge = ?, fotoBase64 = ?, contentTypeArquivo = ? ");
+			sql.append(" estado = ?, ibge = ?, fotoBase64 = ?, contentTypeArquivo = ?, ");
 			sql.append(" curriculoBase64 = ?, contentTypeArquivoCurriculo = ? ");
 			sql.append(" where id = " + usuario.getId());
 			PreparedStatement statement = connection.prepareStatement(sql.toString());
