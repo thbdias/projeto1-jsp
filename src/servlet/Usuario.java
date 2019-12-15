@@ -1,8 +1,10 @@
 package servlet;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -53,6 +55,21 @@ public class Usuario extends HttpServlet {
 				RequestDispatcher view = request.getRequestDispatcher("cadastroUsuario.jsp");
 				request.setAttribute("usuarios", daoUsuario.listar());
 				view.forward(request, response);
+			}
+			else if (acao.equalsIgnoreCase("download")) {
+				BeanCursoJsp usuario = daoUsuario.consultar(user);
+				
+				if (usuario != null) {
+					//response -> resposta para o navegador
+					response.setHeader("Content-Disposition", "attachment;filename=arquivo." + usuario.getContentTypeArquivo().split("\\/")[1]);					
+				
+					//converte a base64 da imagem do banco para byte[]
+					byte[] imageFotoBytes = Base64.decodeBase64(usuario.getFotoBase64());					
+
+					OutputStream os = response.getOutputStream();					
+					os.write(imageFotoBytes);
+				}
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -134,11 +151,8 @@ public class Usuario extends HttpServlet {
 				else if (nome == null || nome.isEmpty()) { //nome não pode vir vazio
 					request.setAttribute("msg", "Nome não pode estar vazio!");
 					request.setAttribute("user", usuario);
-				} 
-				else if (fone == null || fone.isEmpty()) { //fone não pode vir vazio
-					request.setAttribute("msg", "Fone não pode estar vazio!");
-					request.setAttribute("user", usuario);
 				}
+				
 				else if (id == null || id.isEmpty() && !daoUsuario.validarLogin(login)) { //nao deixa cadastrar mais de um login iguais
 					request.setAttribute("msg", "Usuário já existe com o mesmo login!");
 					request.setAttribute("user", usuario);

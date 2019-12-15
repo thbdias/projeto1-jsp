@@ -35,11 +35,7 @@
 					<tr>
 						<td>Nome:</td>
 						<td><input type="text" id="nome" name="nome"
-							value="${user.nome}" placeholder="Nome do usuário"></td>
-					
-						<td>Fone:</td>
-						<td><input type="text" id="fone" name="fone"
-							value="${user.fone}" placeholder="Telefone do usuário"></td>
+							value="${user.nome}" placeholder="Nome do usuário"></td>					
 					</tr>
 					<tr>
 						<td>Login:</td>
@@ -93,11 +89,9 @@
 		<table class="responsive-table">			
 				<caption>Usuários cadastrados</caption>
 				<tr>
-					<th>Id</th>
-					<th>Login</th>
-					<th>Img</th>
-					<th>Nome</th>
-					<th>Fone</th>
+					<th>Id</th>					
+					<th>Foto</th>
+					<th>Nome</th>					
 					<th>Cep</th>
 					<th>Rua</th>
 					<th>Bairro</th>
@@ -110,13 +104,13 @@
 				</tr>
 				<c:forEach items="${usuarios}" var="user">
 					<tr style="text-align: center; vertical-align: middle">
-						<td><c:out value="${user.id}"></c:out></td>
-						<td><c:out value="${user.login}"></c:out></td>
+						<td><c:out value="${user.id}"></c:out></td>						
 						<td>
-							<img src='<c:out value="${user.tempFotoUser}"></c:out>' width="20px" height="20px">
+							<a href="salvarUsuario?acao=download&user=${user.id}">
+								<img src='<c:out value="${user.tempFotoUser}"></c:out>' width="20px" height="20px">
+							</a>
 						</td>
-						<td><c:out value="${user.nome}"></c:out></td>
-						<td><c:out value="${user.fone}"></c:out></td>
+						<td><c:out value="${user.nome}"></c:out></td>						
 						<td><c:out value="${user.cep}"></c:out></td>
 						<td><c:out value="${user.rua}"></c:out></td>
 						<td><c:out value="${user.bairro}"></c:out></td>
