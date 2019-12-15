@@ -15,7 +15,21 @@ public class BeanCursoJsp {
 	private String ibge;
 	private String fotoBase64;
 	private String contentTypeArquivo;
+	private String curriculoBase64;
+	private String contentTypeArquivoCurriculo;
 	private String tempFotoUser;
+	private String tempCurriculoUser;
+	
+	
+	
+	public String getTempCurriculoUser() {
+		tempCurriculoUser =  "data:";
+		tempCurriculoUser += getContentTypeArquivoCurriculo();
+		tempCurriculoUser += ";base64,";
+		tempCurriculoUser += getCurriculoBase64();
+		
+		return tempCurriculoUser;
+	}
 	
 	public String getTempFotoUser() {		
 		tempFotoUser =  "data:";
@@ -26,7 +40,22 @@ public class BeanCursoJsp {
 		return tempFotoUser;
 	}
 	
-	
+	public String getCurriculoBase64() {
+		return curriculoBase64;
+	}
+
+	public void setCurriculoBase64(String curriculoBase64) {
+		this.curriculoBase64 = curriculoBase64;
+	}
+
+	public String getContentTypeArquivoCurriculo() {
+		return contentTypeArquivoCurriculo;
+	}
+
+	public void setContentTypeArquivoCurriculo(String contentTypeArquivoCurriculo) {
+		this.contentTypeArquivoCurriculo = contentTypeArquivoCurriculo;
+	}
+
 	public String getFotoBase64() {
 		return fotoBase64;
 	}
