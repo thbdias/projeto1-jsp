@@ -97,6 +97,7 @@
 				<tr>
 					<th>Id</th>					
 					<th>Foto</th>
+					<th>Curriculo</th>
 					<th>Nome</th>					
 					<th>Cep</th>
 					<th>Rua</th>
@@ -112,8 +113,13 @@
 					<tr style="text-align: center; vertical-align: middle">
 						<td><c:out value="${user.id}"></c:out></td>						
 						<td>
-							<a href="salvarUsuario?acao=download&user=${user.id}">
+							<a href="salvarUsuario?acao=download&tipo=imagem&user=${user.id}">
 								<img src='<c:out value="${user.tempFotoUser}"></c:out>' width="20px" height="20px">
+							</a>
+						</td>
+						<td>
+							<a href="salvarUsuario?acao=download&tipo=curriculo&user=${user.id}">
+								Curriculo
 							</a>
 						</td>
 						<td><c:out value="${user.nome}"></c:out></td>						

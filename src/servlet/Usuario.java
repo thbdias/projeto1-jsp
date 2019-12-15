@@ -60,14 +60,26 @@ public class Usuario extends HttpServlet {
 				BeanCursoJsp usuario = daoUsuario.consultar(user);
 				
 				if (usuario != null) {
+					byte[] fileBytes = null;
+					String contentType = "";
+					String tipo = request.getParameter("tipo");
+					
+					if (tipo.equalsIgnoreCase("imagem")) {
+						//converte a base64 da imagem do banco para byte[]
+						fileBytes = Base64.decodeBase64(usuario.getFotoBase64());
+						contentType = usuario.getContentTypeArquivo();
+					}
+					else if (tipo.equalsIgnoreCase("curriculo")) {
+						//converte a base64 da imagem do banco para byte[]
+						fileBytes = Base64.decodeBase64(usuario.getCurriculoBase64());
+						contentType = usuario.getContentTypeArquivoCurriculo();
+					}
+					
 					//response -> resposta para o navegador
-					response.setHeader("Content-Disposition", "attachment;filename=arquivo." + usuario.getContentTypeArquivo().split("\\/")[1]);					
-				
-					//converte a base64 da imagem do banco para byte[]
-					byte[] imageFotoBytes = Base64.decodeBase64(usuario.getFotoBase64());					
+					response.setHeader("Content-Disposition", "attachment;filename=arquivo." + contentType.split("\\/")[1]);				
 
 					OutputStream os = response.getOutputStream();					
-					os.write(imageFotoBytes);
+					os.write(fileBytes);
 				}
 				
 			}
