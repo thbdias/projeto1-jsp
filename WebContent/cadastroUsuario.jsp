@@ -81,6 +81,8 @@
 						</td>
 						<td>
 							<input type="file" id="curriculo" name="curriculo">
+							<input type="text" style="display:none;" readonly="readonly" name="curriculoTemp" value="${user.curriculoBase64}">
+							<input type="text" style="display:none;" readonly="readonly" name="curriculoContentTypeTemp" value="${user.contentTypeArquivoCurriculo}">
 						</td>
 					</tr>					
 					<tr>

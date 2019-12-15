@@ -164,7 +164,11 @@ public class Usuario extends HttpServlet {
 						
 						usuario.setCurriculoBase64(curriculoBase64);
 						usuario.setContentTypeArquivoCurriculo(curriculoPdf.getContentType());
-					}										
+					}	
+					else { //atualizar
+						usuario.setCurriculoBase64(request.getParameter("curriculoTemp"));
+						usuario.setContentTypeArquivoCurriculo(request.getParameter("curriculoContentTypeTemp"));
+					}
 				}				
 				/*Fim    File upload de imagens e pdf*/
 				
