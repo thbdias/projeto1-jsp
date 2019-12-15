@@ -70,6 +70,12 @@
 							Foto:
 						</td>
 						<td><input type="file" id="foto" name="foto"></td>
+					</tr>
+					<tr>
+						<td>
+							Currículo:
+						</td>
+						<td><input type="file" id="curriculo" name="curriculo"></td>
 					</tr>					
 					<tr>
 						<td></td>
