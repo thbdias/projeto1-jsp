@@ -128,14 +128,28 @@ public class Usuario extends HttpServlet {
 				
 				/*Inicio File upload de imagens e pdf*/
 				
-				if (ServletFileUpload.isMultipartContent(request)) {
+				if (ServletFileUpload.isMultipartContent(request)) {					
 					
+					//img
 					Part imagemFoto = request.getPart("foto");
 					
-					String fotoBase64 = new Base64().encodeBase64String(converteStreamParaByte(imagemFoto.getInputStream()));
+					if (imagemFoto != null) {						
+						String fotoBase64 = new Base64().encodeBase64String(converteStreamParaByte(imagemFoto.getInputStream()));
+						
+						usuario.setFotoBase64(fotoBase64);
+						usuario.setContentTypeArquivo(imagemFoto.getContentType());
+					}
 					
-					usuario.setFotoBase64(fotoBase64);
-					usuario.setContentTypeArquivo(imagemFoto.getContentType());
+					//pdf
+					Part curriculoPdf = request.getPart("curriculo");
+					
+					if (curriculoPdf != null) {						
+						String curriculoBase64 = new Base64().encodeBase64String(converteStreamParaByte(curriculoPdf.getInputStream()));
+						
+						usuario.setCurriculoBase64(curriculoBase64);
+						usuario.setContentTypeArquivoCurriculo(curriculoPdf.getContentType());
+					}
+					
 				}
 				
 				/*Fim    File upload de imagens e pdf*/
