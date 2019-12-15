@@ -138,32 +138,34 @@ public class Usuario extends HttpServlet {
 			
 			try {		
 				
-				/*Inicio File upload de imagens e pdf*/
-				
+				/*Inicio File upload de imagens e pdf*/				
 				if (ServletFileUpload.isMultipartContent(request)) {					
 					
 					//img
-					Part imagemFoto = request.getPart("foto");
+					Part imagemFoto = request.getPart("foto");					
 					
-					if (imagemFoto != null) {						
+					if (imagemFoto != null && imagemFoto.getInputStream().available() > 0) {
 						String fotoBase64 = new Base64().encodeBase64String(converteStreamParaByte(imagemFoto.getInputStream()));
 						
 						usuario.setFotoBase64(fotoBase64);
 						usuario.setContentTypeArquivo(imagemFoto.getContentType());
 					}
+					else { //atualizar
+						usuario.setFotoBase64(request.getParameter("fotoTemp"));
+						usuario.setContentTypeArquivo(request.getParameter("contentTypeTemp"));
+					}
+					
 					
 					//pdf
-					Part curriculoPdf = request.getPart("curriculo");
+					Part curriculoPdf = request.getPart("curriculo");					
 					
-					if (curriculoPdf != null) {						
+					if (curriculoPdf != null && curriculoPdf.getInputStream().available() > 0) {
 						String curriculoBase64 = new Base64().encodeBase64String(converteStreamParaByte(curriculoPdf.getInputStream()));
 						
 						usuario.setCurriculoBase64(curriculoBase64);
 						usuario.setContentTypeArquivoCurriculo(curriculoPdf.getContentType());
-					}
-					
-				}
-				
+					}										
+				}				
 				/*Fim    File upload de imagens e pdf*/
 				
 				if (login == null || login.isEmpty()) { //login não pode vir vazio
