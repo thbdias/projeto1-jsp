@@ -179,8 +179,7 @@ public class Usuario extends HttpServlet {
 						/*fim miniatura imagem*/
 						
 					} else { // atualizar
-						usuario.setFotoBase64(request.getParameter("fotoTemp"));
-						usuario.setContentTypeArquivo(request.getParameter("contentTypeTemp"));
+						usuario.setAtualizarImage(false);
 					}
 
 					// pdf
@@ -193,8 +192,7 @@ public class Usuario extends HttpServlet {
 						usuario.setCurriculoBase64(curriculoBase64);
 						usuario.setContentTypeArquivoCurriculo(curriculoPdf.getContentType());
 					} else { // atualizar
-						usuario.setCurriculoBase64(request.getParameter("curriculoTemp"));
-						usuario.setContentTypeArquivoCurriculo(request.getParameter("curriculoContentTypeTemp"));
+						usuario.setAtualizarPdf(false);
 					}
 				}
 				/* Fim File upload de imagens e pdf */
