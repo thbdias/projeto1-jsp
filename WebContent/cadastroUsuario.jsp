@@ -119,17 +119,31 @@
 				</tr>
 				<c:forEach items="${usuarios}" var="user">
 					<tr style="text-align: center; vertical-align: middle">
-						<td><c:out value="${user.id}"></c:out></td>						
-						<td>
-							<a href="salvarUsuario?acao=download&tipo=imagem&user=${user.id}">
-								<img src='<c:out value="${user.tempFotoUser}"></c:out>' width="20px" height="20px">
-							</a>
-						</td>
-						<td>
-							<a href="salvarUsuario?acao=download&tipo=curriculo&user=${user.id}">
-								Curriculo
-							</a>
-						</td>
+						<td><c:out value="${user.id}"></c:out></td>											
+						<c:if test="${user.fotoBase64.isEmpty() == false}">
+							<td>
+								<a href="salvarUsuario?acao=download&tipo=imagem&user=${user.id}">
+									<img src='<c:out value="${user.tempFotoUser}"></c:out>' width="20px" height="20px" title="Baixar imagem">
+								</a>
+							</td>
+						</c:if>
+						<c:if test="${user.fotoBase64.isEmpty() == true}">
+							<td>
+								<img src="resources/img/user_padrao.png" width="20px" height="20px" title="Não possui foto">
+							</td>
+						</c:if>
+						<c:if test="${user.curriculoBase64.isEmpty() == false}">
+							<td>
+								<a href="salvarUsuario?acao=download&tipo=curriculo&user=${user.id}">
+									<img title="Baixar PDF" src="resources/img/pdf1.png" width="20px" height="20px">
+								</a>
+							</td>
+						</c:if>
+						<c:if test="${user.curriculoBase64.isEmpty() == true}">
+							<td>								
+								<img title="Não possui PDF" src="resources/img/pdf2.png" width="20px" height="20px">
+							</td>
+						</c:if>
 						<td><c:out value="${user.nome}"></c:out></td>						
 						<td><c:out value="${user.cep}"></c:out></td>
 						<td><c:out value="${user.rua}"></c:out></td>
