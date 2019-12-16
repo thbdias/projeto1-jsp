@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 	
 <!DOCTYPE html>
 <html>
@@ -73,8 +76,10 @@
 				<tr style="text-align: center; vertical-align: middle">
 					<td><c:out value="${produto.id}"></c:out></td>
 					<td><c:out value="${produto.nome}"></c:out></td>
-					<td><c:out value="${produto.quantidade}"></c:out></td>
-					<td><c:out value="${produto.valor}"></c:out></td>
+					<td><c:out value="${produto.quantidade}"></c:out></td>					
+					<td>						
+						<fmt:formatNumber type="number" maxFractionDigits="2" value="${produto.valor}"/>
+					</td>					
 					<td>
 						<a href="produtoServlet?acao=delete&idProduto=${produto.id}">
 							<img alt="Excluir" title="Excluir" src="resources/img/delete.png" width="20px" height="20px">
