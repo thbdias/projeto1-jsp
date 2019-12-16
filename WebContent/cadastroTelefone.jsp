@@ -13,8 +13,8 @@
 </head>
 <body>
 
-	<a href="acessoliberado.jsp">Início</a>
-	<a href="index.jsp">Sair</a>
+	<a href="acessoliberado.jsp"><img alt="Início" title="Home" src="resources/img/home.png" width="35px" height="35px"></a>
+	<a href="index.jsp"><img alt="Sair" title="Sair" src="resources/img/sair.png" width="35px" height="35px"></a>
 
 	<center>
 		<h1>Cadastro de Telefones</h1>	
@@ -61,7 +61,7 @@
 
 	<div class="container">
 		<table class="responsive-table">			
-				<caption>Telefones cadastrados</caption>
+				<caption>Lista de Telefones</caption>
 				<tr>
 					<th>Id</th>
 					<th>Número</th>

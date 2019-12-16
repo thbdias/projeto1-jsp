@@ -8,18 +8,29 @@
 </head>
 <body>	
 	
-	<center>
+	<center style="padding-top: 10%">
 		<h1>Seja bem vido ao sistema em jsp</h1>
 		<br>
 		
-		<a href="salvarUsuario?acao=listarTodos">	
-			<img alt="Cadastro de Usuários" title="Cadastro de Usuários" src="resources/img/user.png" width="150px" height="150px">		
-		</a>	
-		
-		<a href="produtoServlet?acao=listarTodos">
-			<img alt="Cadastro de Produto" title="Cadastro de Produto" src="resources/img/produtos.png" width="150px" height="150px">
-		</a>
-	</center>
-	
+		<table>
+			<tr>
+				<td>
+					<a href="salvarUsuario?acao=listarTodos">	
+						<img alt="Cadastro de Usuários" title="Cadastro de Usuários" src="resources/img/user.png" width="100px" height="100px">		
+					</a>
+				</td>
+				<td>
+					<a href="produtoServlet?acao=listarTodos">
+						<img alt="Cadastro de Produto" title="Cadastro de Produto" src="resources/img/produtos.png" width="100px" height="100px">
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td>Cad. Usuário</td>
+				<td>Cad. Produto</td>
+			</tr>
+		</table>
+	</center>	
 </body>
-</html>
+</html>	
+		

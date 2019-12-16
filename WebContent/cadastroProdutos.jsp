@@ -16,8 +16,8 @@
 </head>
 <body>
 
-	<a href="acessoliberado.jsp">Início</a>
-	<a href="index.jsp">Sair</a>
+	<a href="acessoliberado.jsp"><img alt="Início" title="Home" src="resources/img/home.png" width="35px" height="35px"></a>
+	<a href="index.jsp"><img alt="Sair" title="Sair" src="resources/img/sair.png" width="35px" height="35px"></a>
 
 	<center>
 		<h1>Cadastro de Produto</h1>
@@ -63,7 +63,7 @@
 
 	<div class="container">
 		<table class="responsive-table">
-			<caption>Produtos Cadastrados</caption>
+			<caption>Lista de Produtos</caption>
 			<tr>
 				<th>Id</th>
 				<th>Nome</th>

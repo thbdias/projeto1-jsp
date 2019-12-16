@@ -15,8 +15,8 @@
 </head>
 <body>
 
-	<a href="acessoliberado.jsp">Início</a>
-	<a href="index.jsp">Sair</a>
+	<a href="acessoliberado.jsp"><img alt="Início" title="Home" src="resources/img/home.png" width="35px" height="35px"></a>
+	<a href="index.jsp"><img alt="Sair" title="Sair" src="resources/img/sair.png" width="35px" height="35px"></a>
 
 	<center>
 		<h1>Cadastro de Usuário</h1>	
@@ -101,7 +101,7 @@
 
 	<div class="container">
 		<table class="responsive-table">			
-				<caption>Usuários cadastrados</caption>
+				<caption>Lista de Usuários</caption>
 				<tr>
 					<th>Id</th>					
 					<th>Foto</th>
@@ -121,14 +121,14 @@
 					<tr style="text-align: center; vertical-align: middle">
 						<td><c:out value="${user.id}"></c:out></td>											
 						
-						<c:if test="${user.fotoBase64Miniatura.isEmpty() == false}">
+						<c:if test="${user.fotoBase64Miniatura != null}">
 							<td>
 								<a href="salvarUsuario?acao=download&tipo=imagem&user=${user.id}">
 									<img src='<c:out value="${user.fotoBase64Miniatura}"></c:out>' width="20px" height="20px" title="Baixar imagem">
 								</a>
 							</td>
 						</c:if>
-						<c:if test="${user.fotoBase64Miniatura.isEmpty() == true}">
+						<c:if test="${user.fotoBase64Miniatura == null}">
 							<td>
 								<img src="resources/img/user_padrao.png" width="20px" height="20px" title="Não possui foto">
 							</td>
