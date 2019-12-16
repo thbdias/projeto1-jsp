@@ -35,10 +35,12 @@
 						<td><input type="text" id="numero" name="numero" placeholder="Número telefone"></td>
 					
 						<td>
-							<select id="tipo" name="tipo">
+							<select id="tipo" name="tipo" style="width: 156px;">
 								<option>Casa</option>
 								<option>Contato</option>
 								<option>Celular</option>
+								<option>Recado</option>
+								<option>Outros</option>
 							</select>
 						</td>
 						
@@ -46,9 +48,7 @@
 					<tr>
 						<td></td>
 						<td>
-							<input type="submit" value="Salvar">							
-						</td>
-						<td>
+							<input type="submit" value="Salvar">											
 							<input type="submit" value="Voltar" onclick="document.getElementById('formUser').action='telefoneServlet?acao=voltar'">
 						</td>
 					</tr>
