@@ -18,7 +18,7 @@
 
 	<center>
 		<h1>Cadastro de Produto</h1>
-		<h3 style="color: red">${msg}</h3>
+		<h3 style="color: orange">${msg}</h3>
 	</center>
 
 	<form action="produtoServlet" method="post" id="formUser" onsubmit="return validarCampos() ? true : false;">

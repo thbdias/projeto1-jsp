@@ -70,11 +70,17 @@ public class ProdutoServlet extends HttpServlet {
 			produto.setId(!id.isEmpty() ? Long.parseLong(id) : null);
 			produto.setNome(request.getParameter("nome"));
 			
-			if (request.getParameter("quant") != null && !request.getParameter("quant").isEmpty())
-				produto.setQuantidade(Double.parseDouble(request.getParameter("quant").replaceAll("\\,", ".")));			
+			if (request.getParameter("quant") != null && !request.getParameter("quant").isEmpty()) {
+				String valor = request.getParameter("quant").replaceAll("\\.", ""); //1.500,00 -> 1500,00
+				valor = valor.replaceAll("\\ ", "."); //1500,00 -> 1500.00				
+				produto.setQuantidade(Double.parseDouble(valor));
+			}
 			
-			if (request.getParameter("valor") != null && !request.getParameter("valor").isEmpty())
-				produto.setValor(Double.parseDouble(request.getParameter("valor").replaceAll("\\,", ".")));			 
+			if (request.getParameter("valor") != null && !request.getParameter("valor").isEmpty()) {
+				String valor = request.getParameter("valor").replaceAll("\\.", ""); //1.500,00 -> 1500,00
+				valor = valor.replaceAll("\\,", "\\."); //1500,00 -> 1500.00				
+				produto.setValor(Double.parseDouble(valor));
+			}
 				
 			
 			try {
@@ -93,6 +99,7 @@ public class ProdutoServlet extends HttpServlet {
 				} 
 				else if (id == null || id.isEmpty() && daoProduto.validarNomeProduto(produto.getNome())) {
 					daoProduto.salvar(produto);
+					request.setAttribute("msg", "Produto salvo com sucesso!");
 				}
 				else if (id == null || id.isEmpty() && !daoProduto.validarNomeProduto(produto.getNome())) { 
 					request.setAttribute("msg", "Nome já existe para outro produto!");
@@ -101,6 +108,7 @@ public class ProdutoServlet extends HttpServlet {
 				else if (id != null && !id.isEmpty()) { //atualizar
 					if (daoProduto.validarNomeProdutoUpdate(produto.getNome(), produto.getId())) {
 						daoProduto.atualizar(produto);
+						request.setAttribute("msg", "Atualizado com sucesso!");
 					}
 					else {
 						request.setAttribute("msg", "Nome já existe para outro produto!");
