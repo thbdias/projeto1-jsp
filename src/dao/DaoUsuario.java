@@ -22,8 +22,8 @@ public class DaoUsuario {
 		try {
 			StringBuffer sql = new StringBuffer(); 
 			sql.append(" insert into Usuario");
-			sql.append(" (login, senha, nome, fone, cep, rua, bairro, cidade, estado, ibge, fotoBase64, contentTypeArquivo, curriculoBase64, contentTypeArquivoCurriculo)");
-			sql.append(" values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			sql.append(" (login, senha, nome, fone, cep, rua, bairro, cidade, estado, ibge, fotoBase64, contentTypeArquivo, curriculoBase64, contentTypeArquivoCurriculo, fotoBase64Miniatura)");
+			sql.append(" values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			PreparedStatement statement = connection.prepareStatement(sql.toString());
 			statement.setString(1, usuario.getLogin());
 			statement.setString(2, usuario.getSenha());
@@ -39,6 +39,7 @@ public class DaoUsuario {
 			statement.setString(12, usuario.getContentTypeArquivo());
 			statement.setString(13, usuario.getCurriculoBase64());
 			statement.setString(14, usuario.getContentTypeArquivoCurriculo());
+			statement.setString(15, usuario.getFotoBase64Miniatura());
 			statement.execute();
 			connection.commit();
 		} catch (Exception e) {
@@ -182,7 +183,7 @@ public class DaoUsuario {
 			sql.append(" login = ?, senha = ?, nome = ?, fone = ?, ");
 			sql.append(" cep = ?, rua = ?, bairro = ?, cidade = ?, ");
 			sql.append(" estado = ?, ibge = ?, fotoBase64 = ?, contentTypeArquivo = ?, ");
-			sql.append(" curriculoBase64 = ?, contentTypeArquivoCurriculo = ? ");
+			sql.append(" curriculoBase64 = ?, contentTypeArquivoCurriculo = ?, fotoBase64Miniatura = ? ");
 			sql.append(" where id = " + usuario.getId());
 			PreparedStatement statement = connection.prepareStatement(sql.toString());
 			statement.setString(1, usuario.getLogin());
@@ -199,6 +200,7 @@ public class DaoUsuario {
 			statement.setString(12, usuario.getContentTypeArquivo());
 			statement.setString(13, usuario.getCurriculoBase64());
 			statement.setString(14, usuario.getContentTypeArquivoCurriculo());
+			statement.setString(15, usuario.getFotoBase64Miniatura());
 			statement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {			

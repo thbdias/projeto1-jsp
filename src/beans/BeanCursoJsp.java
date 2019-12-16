@@ -19,8 +19,16 @@ public class BeanCursoJsp {
 	private String contentTypeArquivoCurriculo;
 	private String tempFotoUser;
 	private String tempCurriculoUser;
+	private String fotoBase64Miniatura;
 	
 	
+	public void setFotoBase64Miniatura(String fotoBase64Miniatura) {
+		this.fotoBase64Miniatura = fotoBase64Miniatura;
+	}
+	
+	public String getFotoBase64Miniatura() {
+		return fotoBase64Miniatura;
+	}
 	
 	public String getTempCurriculoUser() {
 		tempCurriculoUser =  "data:";
