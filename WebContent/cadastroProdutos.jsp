@@ -4,10 +4,12 @@
 	
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/cadastro.css">
+<head>	
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/cadastro.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+	<script src="resources/javascript/jquery.maskMoney.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -34,11 +36,13 @@
 					</tr>
 					<tr>
 						<td>Quantidade:</td>
-						<td><input type="text" id="quant" name="quant" value="${produto.quantidade}" placeholder="Informe a quantidade"></td>
+						<td><input type="number" id="quant" name="quant" value="${produto.quantidade}" placeholder="Informe a quant"></td>
 					</tr>
 					<tr>
 						<td>Valor:</td>
-						<td><input type="text" id="valor" name="valor" value="${produto.valor}" placeholder="Informe o valor"></td>
+						<td>
+							<input type="text" id="valor" name="valor" value="${produto.valor}" placeholder="Informe o valor" data-thousands="." data-decimal=",">
+						</td>
 					</tr>
 					<tr>
 						<td></td>
@@ -104,6 +108,13 @@
 		}		
 	</script>	
 </body>
+
+<script>
+  $(function() {
+    $('#valor').maskMoney();
+  })
+</script>
+
 </html>
 
 
