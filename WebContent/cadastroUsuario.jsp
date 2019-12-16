@@ -120,18 +120,20 @@
 				<c:forEach items="${usuarios}" var="user">
 					<tr style="text-align: center; vertical-align: middle">
 						<td><c:out value="${user.id}"></c:out></td>											
-						<c:if test="${user.fotoBase64.isEmpty() == false}">
+						
+						<c:if test="${user.fotoBase64Miniatura.isEmpty() == false}">
 							<td>
 								<a href="salvarUsuario?acao=download&tipo=imagem&user=${user.id}">
-									<img src='<c:out value="${user.tempFotoUser}"></c:out>' width="20px" height="20px" title="Baixar imagem">
+									<img src='<c:out value="${user.fotoBase64Miniatura}"></c:out>' width="20px" height="20px" title="Baixar imagem">
 								</a>
 							</td>
 						</c:if>
-						<c:if test="${user.fotoBase64.isEmpty() == true}">
+						<c:if test="${user.fotoBase64Miniatura.isEmpty() == true}">
 							<td>
 								<img src="resources/img/user_padrao.png" width="20px" height="20px" title="Não possui foto">
 							</td>
 						</c:if>
+						
 						<c:if test="${user.curriculoBase64.isEmpty() == false}">
 							<td>
 								<a href="salvarUsuario?acao=download&tipo=curriculo&user=${user.id}">

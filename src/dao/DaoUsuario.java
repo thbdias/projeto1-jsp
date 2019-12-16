@@ -74,7 +74,8 @@ public class DaoUsuario {
 			usuario.setCidade(resultSet.getString("cidade"));
 			usuario.setEstado(resultSet.getString("estado"));
 			usuario.setIbge(resultSet.getString("ibge"));
-			usuario.setFotoBase64(resultSet.getString("fotoBase64"));
+//			usuario.setFotoBase64(resultSet.getString("fotoBase64"));
+			usuario.setFotoBase64Miniatura(resultSet.getString("fotoBase64Miniatura"));
 			usuario.setContentTypeArquivo(resultSet.getString("contentTypeArquivo"));
 			usuario.setCurriculoBase64(resultSet.getString("curriculoBase64"));
 			usuario.setContentTypeArquivoCurriculo(resultSet.getString("contentTypeArquivoCurriculo"));
@@ -118,6 +119,7 @@ public class DaoUsuario {
 			usuario.setCidade(resultSet.getString("cidade"));
 			usuario.setEstado(resultSet.getString("estado"));
 			usuario.setIbge(resultSet.getString("ibge"));
+			usuario.setFotoBase64Miniatura(resultSet.getString("fotoBase64Miniatura"));
 			usuario.setFotoBase64(resultSet.getString("fotoBase64"));
 			usuario.setContentTypeArquivo(resultSet.getString("contentTypeArquivo"));
 			usuario.setCurriculoBase64(resultSet.getString("curriculoBase64"));

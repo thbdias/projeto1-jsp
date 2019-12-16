@@ -69,7 +69,7 @@ public class Usuario extends HttpServlet {
 
 						if (tipo.equalsIgnoreCase("imagem")) {
 							// converte a base64 da imagem do banco para byte[]
-							fileBytes = Base64.decodeBase64(usuario.getFotoBase64());
+							fileBytes = Base64.decodeBase64(usuario.getFotoBase64());							
 							contentType = usuario.getContentTypeArquivo();
 						} else if (tipo.equalsIgnoreCase("curriculo")) {
 							// converte a base64 da imagem do banco para byte[]
@@ -152,24 +152,27 @@ public class Usuario extends HttpServlet {
 					Part imagemFoto = request.getPart("foto");
 
 					if (imagemFoto != null && imagemFoto.getInputStream().available() > 0) {//salvar
-						byte [] bytesImagem = converteStreamParaByte(imagemFoto.getInputStream());
-						String fotoBase64 = new Base64().encodeBase64String(bytesImagem);
+						
+						String fotoBase64 = new Base64().encodeBase64String(converteStreamParaByte(imagemFoto.getInputStream()));
 
 						usuario.setFotoBase64(fotoBase64);
 						usuario.setContentTypeArquivo(imagemFoto.getContentType());
 						
 						/*inicio miniatura imagem*/
-						BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(bytesImagem));						
+						byte[] imageByteDecode = new Base64().decodeBase64(fotoBase64);
+						BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imageByteDecode));						
 						int type = bufferedImage.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : bufferedImage.getType(); //tipo da imagem
 						
 						//cria miniatura
 						BufferedImage resizedImage = new BufferedImage(100, 100, type); //img 100px por 100px
 						Graphics2D g = resizedImage.createGraphics();
-						g.drawImage(resizedImage, 0, 0, 100, 100, null);
+						g.drawImage(bufferedImage, 0, 0, 100, 100, null);
+						g.dispose();
 						
 						//escrever imagem novamente
 						ByteArrayOutputStream baos = new ByteArrayOutputStream();
 						ImageIO.write(resizedImage, "png", baos);
+						
 						
 						String miniaturaBase64 = "data:image/png;base64," + DatatypeConverter.printBase64Binary(baos.toByteArray());
 						usuario.setFotoBase64Miniatura(miniaturaBase64);
