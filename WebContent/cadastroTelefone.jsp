@@ -48,6 +48,9 @@
 						<td>
 							<input type="submit" value="Salvar">							
 						</td>
+						<td>
+							<input type="submit" value="Voltar" onclick="document.getElementById('formUser').action='telefoneServlet?acao=voltar'">
+						</td>
 					</tr>
 				</table>
 			</li>
@@ -82,7 +85,10 @@
 	
 	<script type="text/javascript">
 		function validarCampos() {
-			if (document.getElementById("numero").value == ''){
+			if (document.getElementById('formUser').action != 'telefoneServlet'){
+				//faz nd -> botão voltar
+			}
+			else if (document.getElementById("numero").value == ''){
 				alert('Informe o Número!');
 				return false;
 			}		
