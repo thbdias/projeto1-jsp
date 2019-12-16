@@ -71,10 +71,10 @@ public class ProdutoServlet extends HttpServlet {
 			produto.setNome(request.getParameter("nome"));
 			
 			if (request.getParameter("quant") != null && !request.getParameter("quant").isEmpty())
-				produto.setQuantidade(Double.parseDouble(request.getParameter("quant")));			
+				produto.setQuantidade(Double.parseDouble(request.getParameter("quant").replaceAll("\\,", ".")));			
 			
 			if (request.getParameter("valor") != null && !request.getParameter("valor").isEmpty())
-				produto.setValor(Double.parseDouble(request.getParameter("valor")));			 
+				produto.setValor(Double.parseDouble(request.getParameter("valor").replaceAll("\\,", ".")));			 
 				
 			
 			try {
