@@ -41,7 +41,7 @@
 					<tr>
 						<td>Valor:</td>
 						<td>
-							<input type="text" id="valor" name="valor" value="${produto.valor}" placeholder="Informe o valor" data-thousands="." data-decimal=",">
+							<input type="text" id="valor" name="valor" value="${produto.valorEmTexto}" placeholder="Informe o valor" data-thousands="." data-decimal=",">
 						</td>
 					</tr>
 					<tr>
