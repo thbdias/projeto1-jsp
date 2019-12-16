@@ -39,10 +39,10 @@
 					</tr>
 					<tr>
 						<td>Login:</td>
-						<td><input type="text" id="login" name="login" value="${user.login}" placeholder="Informe Login"></td>
+						<td><input type="text" id="login" name="login" value="${user.login}" placeholder="Informe Login" maxlength="10"></td>
 					
 						<td>Senha:</td>
-						<td><input type="password" id="senha" name="senha" value="${user.senha}" placeholder="Informe senha"></td>
+						<td><input type="password" id="senha" name="senha" value="${user.senha}" placeholder="Informe senha" maxlength="10"></td>
 					</tr>	
 					<tr>
 						<td>Cep:</td>
