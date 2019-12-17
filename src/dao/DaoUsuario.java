@@ -23,8 +23,8 @@ public class DaoUsuario {
 			StringBuffer sql = new StringBuffer();
 			sql.append(" insert into Usuario");
 			sql.append(
-					" (login, senha, nome, fone, cep, rua, bairro, cidade, estado, ibge, fotoBase64, contentTypeArquivo, curriculoBase64, contentTypeArquivoCurriculo, fotoBase64Miniatura, ativo)");
-			sql.append(" values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+					" (login, senha, nome, fone, cep, rua, bairro, cidade, estado, ibge, fotoBase64, contentTypeArquivo, curriculoBase64, contentTypeArquivoCurriculo, fotoBase64Miniatura, ativo, sexo)");
+			sql.append(" values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			PreparedStatement statement = connection.prepareStatement(sql.toString());
 			statement.setString(1, usuario.getLogin());
 			statement.setString(2, usuario.getSenha());
@@ -42,6 +42,7 @@ public class DaoUsuario {
 			statement.setString(14, usuario.getContentTypeArquivoCurriculo());
 			statement.setString(15, usuario.getFotoBase64Miniatura());
 			statement.setBoolean(16, usuario.isAtivo());
+			statement.setString(17, usuario.getSexo());
 			statement.execute();
 			connection.commit();
 		} catch (Exception e) {
@@ -82,6 +83,7 @@ public class DaoUsuario {
 			usuario.setCurriculoBase64(resultSet.getString("curriculoBase64"));
 			usuario.setContentTypeArquivoCurriculo(resultSet.getString("contentTypeArquivoCurriculo"));
 			usuario.setAtivo(resultSet.getBoolean("ativo"));
+			usuario.setSexo(resultSet.getString("sexo"));
 			listBeanCursoJsp.add(usuario);
 		}
 
@@ -128,6 +130,7 @@ public class DaoUsuario {
 			usuario.setCurriculoBase64(resultSet.getString("curriculoBase64"));
 			usuario.setContentTypeArquivoCurriculo(resultSet.getString("contentTypeArquivoCurriculo"));
 			usuario.setAtivo(resultSet.getBoolean("ativo"));
+			usuario.setSexo(resultSet.getString("sexo"));
 			return usuario;
 		}
 
@@ -189,7 +192,7 @@ public class DaoUsuario {
 			sql.append(" update usuario set ");
 			sql.append(" login = ?, senha = ?, nome = ?, fone = ?, ");
 			sql.append(" cep = ?, rua = ?, bairro = ?, cidade = ?, ");
-			sql.append(" estado = ?, ibge = ?, ativo = ? ");
+			sql.append(" estado = ?, ibge = ?, ativo = ?, sexo = ? ");
 
 			if (usuario.isAtualizarImage()) {
 				sql.append(" , fotoBase64 = ?, contentTypeArquivo = ? ");
@@ -217,6 +220,7 @@ public class DaoUsuario {
 			statement.setString(cont, usuario.getEstado()); cont++;
 			statement.setString(cont, usuario.getIbge()); cont++;
 			statement.setBoolean(cont, usuario.isAtivo()); cont++;
+			statement.setString(cont, usuario.getSexo()); cont++;
 
 			if (usuario.isAtualizarImage()) {
 				statement.setString(cont, usuario.getFotoBase64()); cont++;
