@@ -124,6 +124,17 @@
 								%>
 							>Feminino</input>
 						</td>
+						
+						<td>Perfil:</td>
+						<td>
+							<select id="perfil" name="perfil">
+								<option value="nao_informado">Selecione</option>
+								<option value="administrador">Administrador</option>
+								<option value="secretario">Secretário</option>
+								<option value="gerente">Gerente</option>
+								<option value="funcionario">Funcionário</option>
+							</select>
+						</td>
 					</tr>				
 					<tr>
 						<td></td>
