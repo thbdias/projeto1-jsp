@@ -39,7 +39,7 @@
 					</tr>
 					<tr>
 						<td>Quantidade:</td>
-						<td><input type="number" id="quant" name="quant" value="${produto.quantidade}" placeholder="Informe a quant"></td>
+						<td><input type="text" id="quant" name="quant" value="${produto.quantidade}" placeholder="Informe a quant" maxlength="6"></td>
 					</tr>
 					<tr>
 						<td>Valor:</td>
@@ -118,6 +118,12 @@
   $(function() {
     $('#valor').maskMoney();
   })
+  
+  $(document).ready(function(){
+	  $("#quant").keyup(function(){
+		  $("#quant").val(this.value.match(/[0-9]*/));
+	  });
+  });
 </script>
 
 </html>

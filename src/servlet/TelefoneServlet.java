@@ -31,23 +31,29 @@ public class TelefoneServlet extends HttpServlet {
 			String idUser = request.getParameter("idUser");			
 			BeanCursoJsp usuario = null; 
 			String acao = request.getParameter("acao");
-			String idFone = request.getParameter("idFone");						
+			String idFone = request.getParameter("idFone");		
 			
-			if (acao.equalsIgnoreCase("listarTodos")) {
-				usuario = daoUsuario.consultar(idUser);
-				request.setAttribute("telefones", daoTelefone.listarTelefones(usuario.getId()));				
+			if (idUser != null) {			
+				if (acao.equalsIgnoreCase("listarTodos")) {
+					usuario = daoUsuario.consultar(idUser);
+					request.setAttribute("telefones", daoTelefone.listarTelefones(usuario.getId()));				
+				}
+				else if (acao.equalsIgnoreCase("delete")) {
+					daoTelefone.delete(idFone);
+					usuario = daoUsuario.consultar(idUser);
+					request.setAttribute("telefones", daoTelefone.listarTelefones(usuario.getId()));
+					request.setAttribute("msg", "Telefone remevido com sucesso!");
+				}			
+				
+				request.getSession().setAttribute("userSession", usuario);			
+				
+				RequestDispatcher view = request.getRequestDispatcher("cadastroTelefone.jsp");
+				view.forward(request, response);
+			}else {
+				RequestDispatcher view = request.getRequestDispatcher("cadastroUsuario.jsp");
+				request.setAttribute("usuarios", daoUsuario.listar());
+				view.forward(request, response);
 			}
-			else if (acao.equalsIgnoreCase("delete")) {
-				daoTelefone.delete(idFone);
-				usuario = daoUsuario.consultar(idUser);
-				request.setAttribute("telefones", daoTelefone.listarTelefones(usuario.getId()));
-				request.setAttribute("msg", "Telefone remevido com sucesso!");
-			}			
-			
-			request.getSession().setAttribute("userSession", usuario);			
-			
-			RequestDispatcher view = request.getRequestDispatcher("cadastroTelefone.jsp");
-			view.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
