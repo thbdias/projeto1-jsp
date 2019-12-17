@@ -25,25 +25,23 @@ public class ProdutoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		try {
 			String acao = request.getParameter("acao") != null ? request.getParameter("acao") : "listarTodos";
-			String idProduto = request.getParameter("idProduto");
+			String idProduto = request.getParameter("idProduto");			
 			
 			if (acao.equalsIgnoreCase("listarTodos")) {
-				RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");				
 				request.setAttribute("produtos", daoProduto.listarProdutos());				
-				view.forward(request, response);
 			}
 			else if (acao.equalsIgnoreCase("delete")) {
 				daoProduto.delete(idProduto);
-				RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");
 				request.setAttribute("produtos", daoProduto.listarProdutos());
-				view.forward(request, response);
 			}
 			else if (acao.equalsIgnoreCase("editar")) {
 				BeanProduto produto = daoProduto.consultar(idProduto);
-				RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");
 				request.setAttribute("produto", produto);
-				view.forward(request, response);
 			}
+			
+			RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");
+			request.setAttribute("categorias", daoProduto.listarCategorias());
+			view.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -118,6 +116,7 @@ public class ProdutoServlet extends HttpServlet {
 				
 				RequestDispatcher view = request.getRequestDispatcher("cadastroProdutos.jsp");
 				request.setAttribute("produtos", daoProduto.listarProdutos());
+				request.setAttribute("categorias", daoProduto.listarCategorias());
 				view.forward(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
