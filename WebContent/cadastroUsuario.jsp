@@ -34,8 +34,10 @@
 					</tr>
 					<tr>
 						<td>Nome:</td>
-						<td><input type="text" id="nome" name="nome"
-							value="${user.nome}" placeholder="Nome do usuário"></td>					
+						<td><input type="text" id="nome" name="nome" value="${user.nome}" placeholder="Nome do usuário"></td>
+						
+						<td>Ativo: </td>
+						<td><input type="checkbox" id="ativo" name="ativo"></td>					
 					</tr>
 					<tr>
 						<td>Login:</td>
