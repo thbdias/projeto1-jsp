@@ -50,7 +50,7 @@
 					<tr>
 						<td>Categoria: </td>
 						<td>
-							<select id="categorias" name="categorias">
+							<select id="categorias" name="categoria_id">
 								<c:forEach items="${categorias}" var="categoria">
 									<option value="${categoria.id}" id="${categoria.id}"> ${categoria.nome} </option>
 								</c:forEach>

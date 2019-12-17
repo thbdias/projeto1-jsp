@@ -67,6 +67,7 @@ public class ProdutoServlet extends HttpServlet {
 			
 			produto.setId(!id.isEmpty() ? Long.parseLong(id) : null);
 			produto.setNome(request.getParameter("nome"));
+			produto.setCategoria_id(Long.parseLong(request.getParameter("categoria_id")));
 			
 			if (request.getParameter("quant") != null && !request.getParameter("quant").isEmpty()) {
 				String valor = request.getParameter("quant").replaceAll("\\.", ""); //1.500,00 -> 1500,00
