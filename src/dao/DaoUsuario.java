@@ -85,6 +85,7 @@ public class DaoUsuario {
 			usuario.setContentTypeArquivoCurriculo(resultSet.getString("contentTypeArquivoCurriculo"));
 			usuario.setAtivo(resultSet.getBoolean("ativo"));
 			usuario.setSexo(resultSet.getString("sexo"));
+			usuario.setPerfil(resultSet.getString("perfil"));
 			listBeanCursoJsp.add(usuario);
 		}
 
