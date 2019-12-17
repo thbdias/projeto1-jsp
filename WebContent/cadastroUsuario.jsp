@@ -88,15 +88,21 @@
 						<td>
 							<input type="file" id="foto" name="foto">
 						</td>
-					</tr>
-					<tr>
+					
 						<td>
 							Currículo:
 						</td>
 						<td>
 							<input type="file" id="curriculo" name="curriculo">
 						</td>
-					</tr>					
+					</tr>	
+					<tr>
+						<td>Sexo:</td>
+						<td>
+							<input type="radio" id="sexo" name="sexo" value="masculino">Masculino</input>
+							<input type="radio" id="sexo" name="sexo" value="feminino">Feminino</input>
+						</td>
+					</tr>				
 					<tr>
 						<td></td>
 						<td>
