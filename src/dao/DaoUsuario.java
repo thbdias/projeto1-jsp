@@ -195,7 +195,7 @@ public class DaoUsuario {
 			sql.append(" update usuario set ");
 			sql.append(" login = ?, senha = ?, nome = ?, fone = ?, ");
 			sql.append(" cep = ?, rua = ?, bairro = ?, cidade = ?, ");
-			sql.append(" estado = ?, ibge = ?, ativo = ?, sexo = ? ");
+			sql.append(" estado = ?, ibge = ?, ativo = ?, sexo = ?, perfil = ? ");
 
 			if (usuario.isAtualizarImage()) {
 				sql.append(" , fotoBase64 = ?, contentTypeArquivo = ? ");
@@ -224,6 +224,7 @@ public class DaoUsuario {
 			statement.setString(cont, usuario.getIbge()); cont++;
 			statement.setBoolean(cont, usuario.isAtivo()); cont++;
 			statement.setString(cont, usuario.getSexo()); cont++;
+			statement.setString(cont, usuario.getPerfil()); cont++;
 
 			if (usuario.isAtualizarImage()) {
 				statement.setString(cont, usuario.getFotoBase64()); cont++;
