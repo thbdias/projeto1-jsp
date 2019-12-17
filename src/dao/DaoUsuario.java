@@ -65,7 +65,7 @@ public class DaoUsuario {
 		List<BeanCursoJsp> listBeanCursoJsp = new ArrayList<BeanCursoJsp>();
 		BeanCursoJsp usuario = null;
 
-		String sql = "select * from usuario where login <> 'admin' and nome like '%" + descricaoconsulta + "%'";
+		String sql = "select * from usuario where login <> 'admin' and nome like lower('%" + descricaoconsulta + "%')";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		ResultSet resultSet = statement.executeQuery();
 
