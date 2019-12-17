@@ -56,12 +56,16 @@ public class DaoUsuario {
 
 		}
 	}
-
+	
 	public List<BeanCursoJsp> listar() throws Exception {
+		return listar(""); 
+	}		
+
+	public List<BeanCursoJsp> listar(String descricaoconsulta) throws Exception {
 		List<BeanCursoJsp> listBeanCursoJsp = new ArrayList<BeanCursoJsp>();
 		BeanCursoJsp usuario = null;
 
-		String sql = "select * from usuario where login <> 'admin'";
+		String sql = "select * from usuario where login <> 'admin' and nome like '%" + descricaoconsulta + "%'";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		ResultSet resultSet = statement.executeQuery();
 
