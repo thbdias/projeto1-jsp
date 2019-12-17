@@ -48,6 +48,16 @@
 						</td>
 					</tr>
 					<tr>
+						<td>Categoria: </td>
+						<td>
+							<select id="categorias" name="categorias">
+								<c:forEach items="${categorias}" var="categoria">
+									<option value="${categoria.id}" id="${categoria.id}"> ${categoria.nome} </option>
+								</c:forEach>
+							</select>
+						</td>
+					</tr>
+					<tr>
 						<td></td>
 						<td>
 							<input type="submit" value="Salvar">
