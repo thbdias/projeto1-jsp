@@ -60,7 +60,12 @@ public class TelefoneServlet extends HttpServlet {
 			String tipo = request.getParameter("tipo");
 			String acao = request.getParameter("acao");
 			
-			if (!acao.equalsIgnoreCase("voltar")) {			
+			if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("voltar")){ //voltar
+				RequestDispatcher view = request.getRequestDispatcher("cadastroUsuario.jsp");
+				request.setAttribute("usuarios", daoUsuario.listar());
+				view.forward(request, response);
+			}			
+			else {	//salvar		
 				if (numero != null && !numero.isEmpty()) { //validar numero			
 					BeanTelefone telefone = new BeanTelefone();
 					telefone.setNumero(numero);
@@ -83,11 +88,7 @@ public class TelefoneServlet extends HttpServlet {
 					view.forward(request, response);
 				}
 			}
-			else if (acao != null && !acao.isEmpty()){
-				RequestDispatcher view = request.getRequestDispatcher("cadastroUsuario.jsp");
-				request.setAttribute("usuarios", daoUsuario.listar());
-				view.forward(request, response);
-			}
+			 
 				
 		} catch (Exception e) {
 			e.printStackTrace();
