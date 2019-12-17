@@ -100,10 +100,12 @@
 						<td>Sexo:</td>
 						<td>
 							<input type="radio" id="sexo" name="sexo" value="masculino"
-								<%
+								<%									
 									if (request.getAttribute("user") != null){
-										BeanCursoJsp usuario = (BeanCursoJsp) request.getAttribute("user");
-										if (usuario.getSexo().equalsIgnoreCase("masculino")){
+										BeanCursoJsp usuario = (BeanCursoJsp) request.getAttribute("user");																				
+										if (usuario.getSexo() != null && 
+												!usuario.getSexo().isEmpty() &&
+												usuario.getSexo().equalsIgnoreCase("masculino")){
 											out.print("");
 											out.print("checked=\"checked\"");
 											out.print("");
@@ -115,7 +117,9 @@
 								<%
 									if (request.getAttribute("user") != null){
 										BeanCursoJsp usuario = (BeanCursoJsp) request.getAttribute("user");
-										if (usuario.getSexo().equalsIgnoreCase("feminino")){
+										if (usuario.getSexo() != null && 
+												!usuario.getSexo().isEmpty() &&
+												usuario.getSexo().equalsIgnoreCase("feminino")){
 											out.print("");
 											out.print("checked=\"checked\"");
 											out.print("");
@@ -129,10 +133,62 @@
 						<td>
 							<select id="perfil" name="perfil">
 								<option value="nao_informado">Selecione</option>
-								<option value="administrador">Administrador</option>
-								<option value="secretario">Secretário</option>
-								<option value="gerente">Gerente</option>
-								<option value="funcionario">Funcionário</option>
+								<option value="administrador"
+									<%
+										if (request.getAttribute("user") != null){
+											BeanCursoJsp usuario = (BeanCursoJsp) request.getAttribute("user");
+											if (usuario.getPerfil() != null && 
+													!usuario.getPerfil().isEmpty() &&
+													usuario.getPerfil().equalsIgnoreCase("administrador")){
+												out.print("");
+												out.print("selected=\"selected\"");
+												out.print("");
+											}
+										}
+									%>
+								>Administrador</option>
+								<option value="secretario"
+									<%
+										if (request.getAttribute("user") != null){
+											BeanCursoJsp usuario = (BeanCursoJsp) request.getAttribute("user");
+											if (usuario.getPerfil() != null && 
+													!usuario.getPerfil().isEmpty() &&
+													usuario.getPerfil().equalsIgnoreCase("secretario")){
+												out.print("");
+												out.print("selected=\"selected\"");
+												out.print("");
+											}
+										}
+									%>
+								>Secretário</option>
+								<option value="gerente"
+									<%
+										if (request.getAttribute("user") != null){
+											BeanCursoJsp usuario = (BeanCursoJsp) request.getAttribute("user");
+											if (usuario.getPerfil() != null && 
+													!usuario.getPerfil().isEmpty() &&
+													usuario.getPerfil().equalsIgnoreCase("gerente")){
+												out.print("");
+												out.print("selected=\"selected\"");
+												out.print("");
+											}
+										}
+									%>
+								>Gerente</option>
+								<option value="funcionario"
+									<%
+										if (request.getAttribute("user") != null){
+											BeanCursoJsp usuario = (BeanCursoJsp) request.getAttribute("user");
+											if (usuario.getPerfil() != null && 
+													!usuario.getPerfil().isEmpty() &&
+													usuario.getPerfil().equalsIgnoreCase("funcionario")){
+												out.print("");
+												out.print("selected=\"selected\"");
+												out.print("");
+											}
+										}
+									%>
+								>Funcionário</option>
 							</select>
 						</td>
 					</tr>				
