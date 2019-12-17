@@ -81,7 +81,7 @@
 						<fmt:formatNumber type="number" maxFractionDigits="2" value="${produto.valor}"/>
 					</td>					
 					<td>
-						<a href="produtoServlet?acao=delete&idProduto=${produto.id}">
+						<a href="produtoServlet?acao=delete&idProduto=${produto.id}" onclick="return confirm('Confirmar a exclusão?');">
 							<img alt="Excluir" title="Excluir" src="resources/img/delete.png" width="20px" height="20px">
 						</a>
 					</td>
