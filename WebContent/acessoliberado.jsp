@@ -6,7 +6,9 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>	
+<body>
+	
+	<a href="index.jsp"><img alt="Sair" title="Sair" src="resources/img/sair.png" width="35px" height="35px"></a>
 	
 	<center style="padding-top: 10%">
 		<h1>Seja bem vido ao sistema em jsp</h1>
