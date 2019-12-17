@@ -99,8 +99,30 @@
 					<tr>
 						<td>Sexo:</td>
 						<td>
-							<input type="radio" id="sexo" name="sexo" value="masculino">Masculino</input>
-							<input type="radio" id="sexo" name="sexo" value="feminino">Feminino</input>
+							<input type="radio" id="sexo" name="sexo" value="masculino"
+								<%
+									if (request.getAttribute("user") != null){
+										BeanCursoJsp usuario = (BeanCursoJsp) request.getAttribute("user");
+										if (usuario.getSexo().equalsIgnoreCase("masculino")){
+											out.print("");
+											out.print("checked=\"checked\"");
+											out.print("");
+										}
+									}
+								%>
+							>Masculino</input>
+							<input type="radio" id="sexo" name="sexo" value="feminino"
+								<%
+									if (request.getAttribute("user") != null){
+										BeanCursoJsp usuario = (BeanCursoJsp) request.getAttribute("user");
+										if (usuario.getSexo().equalsIgnoreCase("feminino")){
+											out.print("");
+											out.print("checked=\"checked\"");
+											out.print("");
+										}
+									}
+								%>
+							>Feminino</input>
 						</td>
 					</tr>				
 					<tr>
