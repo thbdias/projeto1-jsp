@@ -150,7 +150,7 @@
 						<td><c:out value="${user.estado}"></c:out></td>
 						<td><c:out value="${user.ibge}"></c:out></td>
 						<td>
-							<a href="salvarUsuario?acao=delete&user=${user.id}">
+							<a href="salvarUsuario?acao=delete&user=${user.id}" onclick="return confirm('Confirmar a exclusão?');">
 								<img alt="Excluir" title="Excluir" src="resources/img/delete.png" width="20px" height="20px">
 							</a>
 						</td>
