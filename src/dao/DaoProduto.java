@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import beans.BeanCategoria;
 import beans.BeanCursoJsp;
 import beans.BeanProduto;
 import connection.SingleConnection;
@@ -57,6 +58,26 @@ public class DaoProduto {
 		
 		return produtos;
 	}
+	
+	public List<BeanCategoria> listarCategorias() throws Exception{
+		List<BeanCategoria> categorias = new ArrayList<BeanCategoria>();
+		BeanCategoria categoria = null;
+		
+		String sql = "select * from categoria";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		ResultSet resultSet = statement.executeQuery();
+		
+		while (resultSet.next()) {
+			categoria = new BeanCategoria();
+			categoria.setId(resultSet.getLong("id"));
+			categoria.setNome(resultSet.getString("nome"));
+			categorias.add(categoria);
+		}
+		
+		return categorias;
+	}
+	
+	
 	
 	public boolean validarNomeProduto(String nomeProduto) throws Exception {
 		String sql = "select count(1) as qtd from produto where nome = '"+nomeProduto+"'";
