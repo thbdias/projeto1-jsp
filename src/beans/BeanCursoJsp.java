@@ -22,10 +22,19 @@ public class BeanCursoJsp {
 	private String fotoBase64Miniatura;
 	private boolean atualizarImage = true;
 	private boolean atualizarPdf = true;
+	private boolean ativo;
 	
 	
 	
 	
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
 	public boolean isAtualizarImage() {
 		return atualizarImage;
 	}
